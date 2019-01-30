@@ -59,7 +59,7 @@ class SignUpForm extends Component {
         />
         {!this.checkEmailRegex() && <p>Enter a valid email</p>}
       </div>
-    )
+    );
   }
 
   getPasswordInputFields = () => {
@@ -86,12 +86,12 @@ class SignUpForm extends Component {
         />
         {!this.checkMatchingPassword() && <p>Passwords do not match</p>}
       </div>
-    )
+    );
   }
 
   render() {
-    const { name, email, status } = this.state;
-    return(
+    const { status } = this.state;
+    return (
       <form onSubmit={this.handleSubmit} className="form">
         <h2>Sign Up</h2>
         {this.getNameAndEmailInputFields()}

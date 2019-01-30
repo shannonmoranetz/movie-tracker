@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { loginUser } from '../../utils/queries'; // maybe don't need if fetchUsers called
-import { fetchUsers } from '../../utils/queries';
-
+import { connect } from 'react-redux';
+import { loginUser } from '../../utils/queries';
+import { loginUser as loginAction } from '../../actions';
 
 class LoginForm extends Component {
   constructor() {
@@ -13,18 +13,17 @@ class LoginForm extends Component {
     };
   }
 
-  handleChange = ({ target }) => {
-    this.setState({
-      [target.name]: target.value
-    })
+  handleChange = (event) => {
+    const { id, value } = event.target
+    this.setState({ [id]: value });
   }
 
   handleSubmit = async (event) => {
-    event.preventDefault()
-    const { email, password } = this.state
+    event.preventDefault();
+    const { email, password } = this.state;
     try {
-      const response = await loginUser(email, password)
-      console.log(response)
+      const response = await loginUser(email, password);
+      this.props.loginAction(response.data);
       this.setState({ status: response.status });
     } catch (error) {
       this.setState({ status: 'error' });
@@ -32,18 +31,18 @@ class LoginForm extends Component {
   }
 
   render() {
-    let { email, password, status } = this.state
-    return(
+    let { status } = this.state;
+    return (
       <div className="login-form">
         <h2>Login</h2>
         <form onSubmit={this.handleSubmit} className="login-form">
           <div className="email-section">
             <label htmlFor="email">Email:</label>
-            <input type="email" name="email" onChange={this.handleChange} />
+            <input type="email" id="email" onChange={this.handleChange} />
           </div>
           <div className="password-section">
             <label htmlFor="password">Password:</label>
-            <input type="password" name="password" onChange={this.handleChange} />
+            <input type="password" id="password" onChange={this.handleChange} />
           </div>
           <div className="submit-section">
             <input type="submit" value="login" />
@@ -55,4 +54,8 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export const mapDispatchToProps = (dispatch) => ({
+  loginAction: (user) => dispatch(loginAction(user))
+})
+
+export default connect(null, mapDispatchToProps)(LoginForm);
