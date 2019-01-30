@@ -23,6 +23,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Link to='/'><h1>Movie Tracker</h1></Link>
         <Route path='/sign-up' component={SignUpForm} />
         <Route path='/login' component={LoginForm} />
         <Route exact path='/' render={() => {
