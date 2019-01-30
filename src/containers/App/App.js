@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchData, postData } from '../../utils/api';
+import { fetchData } from '../../utils/api';
 import { connect } from 'react-redux';
 import { addMovie } from '../../actions/index';
 import MovieContainer from '../MovieContainer/MovieContainer';
@@ -8,8 +8,8 @@ import LoginForm from '../LoginForm/LoginForm';
 import { Route, Link } from 'react-router-dom';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {};
   }
 
