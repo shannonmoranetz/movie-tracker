@@ -4,7 +4,7 @@ import MovieCard from '../../components/MovieCard/MovieCard';
 
 const MovieContainer = ({ movies }) => {
   return (
-    <div>
+    <div className="MovieContainer">
       {
         movies.map(movie => {
           return <MovieCard key={movie.id} {...movie} />
