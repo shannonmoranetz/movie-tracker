@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { loginUser } from '../../utils/queries';
+import { loginUser } from '../../utils/queries'; // maybe don't need if fetchUsers called
+import { fetchUsers } from '../../utils/queries';
+
 
 class LoginForm extends Component {
   constructor() {
@@ -8,6 +10,10 @@ class LoginForm extends Component {
       email: '',
       password: ''
     };
+  }
+
+  componentDidMount = () => {
+    fetchUsers('test1', 'test2')
   }
 
   handleChange = ({ target }) => {
@@ -31,7 +37,7 @@ class LoginForm extends Component {
             <input type="password" name="password" onChange={this.handleChange} />
           </div>
           <div className="submit-section">
-            <button  type="submit" onSubmit={loginUser(email, password)}>Login</button>
+            <button  type="submit" onSubmit={() => fetchUsers(email, password)}>Login</button>
           </div>
         </form>
       </div>
