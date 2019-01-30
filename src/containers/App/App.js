@@ -15,12 +15,6 @@ class App extends Component {
   componentDidMount = async () => {
     const data = await fetchData('https://api.themoviedb.org/3/movie/now_playing', '&language=en-US&page=1');
     data.results.forEach((movie) => this.props.addMovie(movie));
-    const users = await fetchData('http://localhost:3000/api/users');
-    console.log('users data before', users.data);
-    const response = await createUser('shannon', 'shannon3@email.com', 'password123');
-    console.log(response)
-    const users2 = await fetchData('http://localhost:3000/api/users');
-    console.log('users data after', users2.data);
   }
   
   render() {

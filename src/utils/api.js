@@ -4,7 +4,7 @@ export const fetchData = async (url1, url2) => {
   if (response.ok) {
     return await response.json();
   } else {
-    throw Error(`Error fetching data: ${response.status}`);
+    throw Error(`${response.statusText} - Status ${response.status}`);
   }
 }
 
@@ -14,6 +14,6 @@ export const postData = async (urlSuffix, options) => {
   if (response.ok) {
     return await response.json();
   } else {
-    throw Error(`Error posting data: ${response.status}`);
+    throw Error(`${response.statusText} - Status ${response.status}`);
   }
 }

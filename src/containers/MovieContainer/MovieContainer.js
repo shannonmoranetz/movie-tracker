@@ -12,7 +12,6 @@ const MovieContainer = ({ movies }) => {
       }
     </div>
   )
-
 }
 
 const mapStateToProps = (state) => {
