@@ -10,7 +10,7 @@ export const createUser = async (name, email, password) => {
       }
     });
   } catch (error) {
-    return Error('Error creating user: ' + error.message);
+    throw Error('Error creating user: ' + error.message);
   }
 }
 
@@ -24,6 +24,6 @@ export const loginUser = async (email, password) => {
       }
     });
   } catch (error) {
-    return Error('Error logging in: ' + error.message);
+    throw Error('Error logging in: ' + error.message);
   }
 }
