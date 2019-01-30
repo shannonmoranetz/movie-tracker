@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addMovie } from '../../actions/index';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import { Route } from 'react-router-dom';
+import { createUser, loginUser } from '../../utils/queries';
 
 class App extends Component {
   constructor(props) {
@@ -16,17 +17,11 @@ class App extends Component {
     data.results.forEach((movie) => this.props.addMovie(movie));
     const users = await fetchData('http://localhost:3000/api/users');
     console.log('users data before', users.data);
-    const newUserResponse = await postData('/new', {
-      method: 'POST',
-      body: JSON.stringify({ name: 'Jeo3', email: 'test3@email.com', password: 'test'}),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    console.log('newUserResponse', newUserResponse);
+    const response = await createUser('shannon', 'shannon3@email.com', 'password123');
+    console.log(response)
     const users2 = await fetchData('http://localhost:3000/api/users');
     console.log('users data after', users2.data);
-  } 
+  }
   
   render() {
     return (
