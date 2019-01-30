@@ -5,6 +5,7 @@ import { addMovie } from '../../actions/index';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import SignUpForm from '../SignUpForm/SignUpForm';
 import LoginForm from '../LoginForm/LoginForm';
+import { withRouter } from "react-router-dom";
 import { Route, Link } from 'react-router-dom';
 
 class App extends Component {
@@ -41,4 +42,4 @@ const mapDispatchToProps = (dispatch) => ({
   addMovie: (movie) => dispatch(addMovie(movie))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

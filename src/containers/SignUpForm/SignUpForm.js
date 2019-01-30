@@ -84,7 +84,7 @@ class SignUpForm extends Component {
           required
           className={inputStyle}
         />
-        {!this.checkMatchingPassword() && <p>Passwords do not match</p>}
+        {!this.checkMatchingPassword() && <p>Passwords do not match.</p>}
       </div>
     );
   }
@@ -97,7 +97,7 @@ class SignUpForm extends Component {
         {this.getNameAndEmailInputFields()}
         {this.getPasswordInputFields()}
         <input type="submit" value="Submit" />
-        {status === 'error' && <p>Email already registered to an account</p>}
+        {status === 'error' && <p>Email has already been used.</p>}
         {status === 'success' && <Redirect to='/login' />}
       </form>
     );

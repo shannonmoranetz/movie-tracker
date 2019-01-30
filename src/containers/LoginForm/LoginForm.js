@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../../utils/queries';
 import { loginUser as loginAction } from '../../actions';
+import { Redirect } from 'react-router-dom';
 
 class LoginForm extends Component {
   constructor() {
@@ -48,7 +49,8 @@ class LoginForm extends Component {
             <input type="submit" value="login" />
           </div>
         </form>
-        <p>{status}</p>
+      {status === 'error' && <p>Email and password do not match.</p>}
+      {status === 'success' && <Redirect to='/' />}
       </div>
     );
   }
