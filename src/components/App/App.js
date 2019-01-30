@@ -1,22 +1,38 @@
 import React, { Component } from 'react';
 import { fetchData } from '../../utils/api';
+import { connect } from 'react-redux';
+import { addMovie } from '../../actions/index';
+import MovieContainer from '../../containers/MovieContainer/MovieContainer';
+import { Route } from 'react-router-dom';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
   componentDidMount = async () => {
-    console.log(await fetchData('https://api.themoviedb.org/discover/movie?primary_release_year=2018'));
+    const data = await fetchData('https://api.themoviedb.org/3/movie/now_playing', '&language=en-US&page=1');
+    data.results.forEach((movie) => this.props.addMovie(movie));
   } 
-
+  
   render() {
     return (
       <div className="App">
+        <Route exact path='/' render={() => {
+          return this.props.movies.length > 0 ? <MovieContainer /> : null;
+        }} />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return { movies: state.movies }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  addMovie: (movie) => dispatch(addMovie(movie))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
