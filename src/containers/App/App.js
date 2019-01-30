@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { fetchData } from '../../utils/api';
 import { connect } from 'react-redux';
 import { addMovie } from '../../actions/index';
-import MovieContainer from '../../containers/MovieContainer/MovieContainer';
+import MovieContainer from '../MovieContainer/MovieContainer';
 import { Route } from 'react-router-dom';
 
 class App extends Component {
