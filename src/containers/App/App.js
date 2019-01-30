@@ -25,12 +25,17 @@ class App extends Component {
       <div className="App">
         <Route path='/sign-up' component={SignUpForm} />
         <Route path='/login' component={LoginForm} />
-        <Header />
         <Route exact path='/' render={() => {
           return (
             <div className="App--home">
-              <Link to='/sign-up'>Sign Up</Link>
-              <Link to='/login'>Login</Link>
+              <Header />
+              {
+                !this.props.user.name && 
+                <div className="user-links">
+                  <Link to='/sign-up'>Sign Up</Link>
+                  <Link to='/login'>Login</Link>
+                </div>
+              }
               {this.props.movies.length > 0 ? <MovieContainer /> : null};
             </div>
           );
@@ -40,9 +45,10 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { movies: state.movies }
-}
+const mapStateToProps = (state) => ({
+  movies: state.movies,
+  user: state.user
+})
 
 const mapDispatchToProps = (dispatch) => ({
   addMovie: (movie) => dispatch(addMovie(movie))
