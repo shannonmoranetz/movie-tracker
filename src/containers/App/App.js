@@ -3,8 +3,9 @@ import { fetchData, postData } from '../../utils/api';
 import { connect } from 'react-redux';
 import { addMovie } from '../../actions/index';
 import MovieContainer from '../MovieContainer/MovieContainer';
-import { Route } from 'react-router-dom';
-import { createUser, loginUser } from '../../utils/queries';
+import SignUpForm from '../SignUpForm/SignUpForm';
+import LoginForm from '../LoginForm/LoginForm';
+import { Route, Link } from 'react-router-dom';
 
 class App extends Component {
   constructor(props) {
@@ -20,6 +21,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Link to='/sign-up'>Sign Up</Link>
+        <Link to='/login'>Login</Link>
+        <Route path='/sign-up' component={SignUpForm} />
+        <Route path='/login' component={LoginForm} />
         <Route exact path='/' render={() => {
           return this.props.movies.length > 0 ? <MovieContainer /> : null;
         }} />

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { loginUser } from '../../utils/queries';
+import { createUser } from '../../utils/queries';
 
-class LoginForm extends Component {
+class SignUpForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -11,9 +11,9 @@ class LoginForm extends Component {
 
   render() {
     return(
-      <h2>Login</h2>
+      <h2>Sign Up</h2>
     );
   }
 }
 
-export default LoginForm;
+export default SignUpForm;
