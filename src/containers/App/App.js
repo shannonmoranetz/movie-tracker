@@ -7,6 +7,7 @@ import SignUpForm from '../SignUpForm/SignUpForm';
 import LoginForm from '../LoginForm/LoginForm';
 import { withRouter } from "react-router-dom";
 import { Route, Link } from 'react-router-dom';
+import Header from '../Header/Header';
 
 class App extends Component {
   constructor() {
@@ -26,6 +27,7 @@ class App extends Component {
         <Link to='/login'>Login</Link>
         <Route path='/sign-up' component={SignUpForm} />
         <Route path='/login' component={LoginForm} />
+        <Header />
         <Route exact path='/' render={() => {
           return this.props.movies.length > 0 ? <MovieContainer /> : null;
         }} />
