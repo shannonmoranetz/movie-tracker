@@ -7,3 +7,13 @@ export const fetchData = async (url1, url2) => {
     throw Error(`Error fetching data: ${response.status}`);
   }
 }
+
+export const postData = async (urlSuffix, options) => {
+  const url = 'http://localhost:3000/api/users' + urlSuffix;
+  const response = await fetch(url, options);
+  if (response.ok) {
+    return await response.json();
+  } else {
+    throw Error(`Error posting data: ${response.status}`);
+  }
+}

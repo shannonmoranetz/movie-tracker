@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchData } from '../../utils/api';
+import { fetchData, postData } from '../../utils/api';
 import { connect } from 'react-redux';
 import { addMovie } from '../../actions/index';
 import MovieContainer from '../MovieContainer/MovieContainer';
@@ -14,6 +14,18 @@ class App extends Component {
   componentDidMount = async () => {
     const data = await fetchData('https://api.themoviedb.org/3/movie/now_playing', '&language=en-US&page=1');
     data.results.forEach((movie) => this.props.addMovie(movie));
+    const users = await fetchData('http://localhost:3000/api/users');
+    console.log('users data before', users.data);
+    const newUserResponse = await postData('/new', {
+      method: 'POST',
+      body: JSON.stringify({ name: 'Jeo3', email: 'test3@email.com', password: 'test'}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    console.log('newUserResponse', newUserResponse);
+    const users2 = await fetchData('http://localhost:3000/api/users');
+    console.log('users data after', users2.data);
   } 
   
   render() {
