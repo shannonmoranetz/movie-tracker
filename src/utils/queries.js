@@ -14,19 +14,11 @@ export const createUser = async (name, email, password) => {
   }
 }
 
-// 1. method to fetch all users 
-// 2. method to compare users and return the matching one (called from onSubmit)
-// 3. email, pw from matching user passed through to loginUser
-
 export const loginUser = async (email, password) => {
-  console.log('fire')
   try {
-    // let user = users.filter(user => {
-    //   return user.email === email && password;
-    // });
     return await postData('', {
       method: 'POST',
-      body: JSON.stringify({ email, password }), // stringify the matching email + pw
+      body: JSON.stringify({ email, password }),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -35,4 +27,3 @@ export const loginUser = async (email, password) => {
     throw Error('Error logging in: ' + error.message);
   }
 }
-

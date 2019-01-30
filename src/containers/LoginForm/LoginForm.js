@@ -8,12 +8,9 @@ class LoginForm extends Component {
     super();
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      status: ''
     };
-  }
-
-  componentDidMount = () => {
-    fetchUsers('test1', 'test2')
   }
 
   handleChange = ({ target }) => {
@@ -22,12 +19,24 @@ class LoginForm extends Component {
     })
   }
 
+  handleSubmit = async (event) => {
+    event.preventDefault()
+    const { email, password } = this.state
+    try {
+      const response = await loginUser(email, password)
+      console.log(response)
+      this.setState({ status: response.status });
+    } catch (error) {
+      this.setState({ status: 'error' });
+    }
+  }
+
   render() {
-    let { email, password } = this.state
+    let { email, password, status } = this.state
     return(
       <div className="login-form">
         <h2>Login</h2>
-        <form className="login-form">
+        <form onSubmit={this.handleSubmit} className="login-form">
           <div className="email-section">
             <label htmlFor="email">Email:</label>
             <input type="email" name="email" onChange={this.handleChange} />
@@ -37,9 +46,10 @@ class LoginForm extends Component {
             <input type="password" name="password" onChange={this.handleChange} />
           </div>
           <div className="submit-section">
-            <button  type="submit" onSubmit={() => fetchUsers(email, password)}>Login</button>
+            <input type="submit" value="login" />
           </div>
         </form>
+        <p>{status}</p>
       </div>
     );
   }
