@@ -1,14 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { logoutUser } from '../../actions';
 
-const Header = ({ user }) => {
-  return user.name ?
-    <p>Hello, { user.name }</p> :
-    <p>Log in to view your saved movies.</p>
+const Header = ({ user, logoutUser }) => {
+  return (
+    <header>
+      {
+        user.name ?
+        <div>
+          <p>Hello, { user.name }</p>
+          <a href='' onClick={() => logoutUser()}>Log Out</a>
+        </div> :
+        <p>Log in to view your favorited movies.</p>
+      }
+    </header>
+  );
 }
 
 export const mapStateToProps = (state) => ({
   user: state.user
-})
+});
 
-export default connect(mapStateToProps)(Header)
+export const mapDispatchToProps = (dispatch) => ({
+  logoutUser: () => dispatch(logoutUser())
+}); 
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

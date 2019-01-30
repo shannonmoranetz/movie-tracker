@@ -23,13 +23,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Link to='/sign-up'>Sign Up</Link>
-        <Link to='/login'>Login</Link>
         <Route path='/sign-up' component={SignUpForm} />
         <Route path='/login' component={LoginForm} />
         <Header />
         <Route exact path='/' render={() => {
-          return this.props.movies.length > 0 ? <MovieContainer /> : null;
+          return (
+            <div className="App--home">
+              <Link to='/sign-up'>Sign Up</Link>
+              <Link to='/login'>Login</Link>
+              {this.props.movies.length > 0 ? <MovieContainer /> : null};
+            </div>
+          );
         }} />
       </div>
     );
