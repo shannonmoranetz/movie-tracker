@@ -2,15 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MovieCard from '../../containers/MovieCard/MovieCard';
 import Header from '../../containers/Header/Header';
-import { LoginPrompt } from '../../components/LoginPrompt/LoginPrompt';
+import LoginPrompt from '../../components/LoginPrompt/LoginPrompt';
+import MovieDetails from '../../components/MovieDetails/MovieDetails';
+import { Route } from 'react-router-dom';
 
 const MovieContainer = ({ movies, favorites, match, displayPrompt }) => {
 
-  const favoriteMovies = movies.filter(movie => favorites.includes(movie.id))
+  const favoriteMovies = movies.filter(movie => favorites.includes(movie.id));
 
   return (
     <div className="MovieContainer">
       <Header />
+      <Route path='/movies/:id' render={({ match }) => {
+        const { id } = match.params;
+        const movie = movies.find(movie => movie.id === parseInt(id));
+        return movie ? <MovieDetails {...movie} /> : null;
+        }} />
       {
         match.path === '/' &&
           movies.map(movie => {

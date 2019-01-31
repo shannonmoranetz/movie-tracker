@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
-export const LoginPrompt = () => {
+const LoginPrompt = () => {
   return (
     <div className="login-prompt">
       <Link to='/'><button>X</button></Link>
@@ -14,3 +13,5 @@ export const LoginPrompt = () => {
     </div>
   )
 }
+
+export default LoginPrompt;

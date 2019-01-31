@@ -7,6 +7,8 @@ import SignUpForm from '../../containers/SignUpForm/SignUpForm';
 import LoginForm from '../LoginForm/LoginForm';
 import { Route, Link, withRouter } from 'react-router-dom';
 
+// import MovieDetails from '../../components/MovieDetails/MovieDetails';
+
 class App extends Component {
   constructor() {
     super();

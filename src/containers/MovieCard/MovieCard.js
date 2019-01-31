@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchData } from '../../utils/api';
 import { setFavorites, toggleLoginPrompt } from '../../actions';
+import { Link } from 'react-router-dom';
 
 class MovieCard extends Component {
   constructor() {
@@ -52,15 +53,17 @@ class MovieCard extends Component {
   }
 
   render() {
-    const { title, poster_path, currentUser, favorite } = this.props;
+    const { title, poster_path, currentUser, favorite, id } = this.props;
     return (
       <div className="MovieCard">
         <h3 className="movie-title">{title}</h3>
-        <img
-          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-          alt={title}
-          className='MovieCard--image'
-        />
+        <Link to={`/movies/${id}`}>
+          <img
+            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+            alt={title}
+            className='MovieCard--image'
+          />
+        </Link>
         <button onClick={() => this.handleClick(currentUser)}>
           { favorite ? 'Remove from favorites' : 'Add to favorites'}
         </button>
