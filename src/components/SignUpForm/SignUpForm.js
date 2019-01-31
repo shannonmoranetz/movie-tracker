@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { fetchData } from '../../utils/api';
 import { Redirect } from 'react-router-dom';
+import { setUser } from '../../actions';
+import { connect } from 'react-redux';
 
 class SignUpForm extends Component {
   constructor() {
@@ -33,11 +35,26 @@ class SignUpForm extends Component {
           }
         }
         const response = await fetchData(url, options);
+        await this.autoLoginUser(email, passwordOriginal);
         this.setState({ status: response.status });
       } catch (error) {
         this.setState({ status: 'error' });
       }
     }
+  }
+
+  autoLoginUser = async (email, password) => {
+    const loginUrl = 'http://localhost:3000/api/users';
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const response = await fetchData(loginUrl, options);
+    const { name, id } = response.data;
+    this.props.setUser({ name, id });
   }
 
   checkEmailRegex = () => {
@@ -106,10 +123,14 @@ class SignUpForm extends Component {
         {this.getPasswordInputFields()}
         <input type="submit" value="Submit" />
         {status === 'error' && <p>Email has already been used.</p>}
-        {status === 'success' && <Redirect to='/login' />}
+        {status === 'success' && <Redirect to='/' />}
       </form>
     );
   }
 }
 
-export default SignUpForm;
+export const mapDispatchToProps = (dispatch) => ({
+  setUser: (user) => dispatch(setUser(user))
+});
+
+export default connect(null, mapDispatchToProps)(SignUpForm);

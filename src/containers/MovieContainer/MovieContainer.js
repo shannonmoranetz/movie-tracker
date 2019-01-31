@@ -26,7 +26,7 @@ const MovieContainer = ({ movies, favorites, match, displayPrompt }) => {
       {
         match.path === '/favorites' && favorites.length > 0 &&
         favoriteMovies.map(movie => {
-          if (favorites.includes(movie.movie_id)) {
+          if (favorites.includes(movie.id)) {
             return <MovieCard key={movie.id} {...movie} favorite={true} />
           }
           return <MovieCard key={movie.id} {...movie} favorite={false} />

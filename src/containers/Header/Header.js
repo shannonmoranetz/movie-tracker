@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logoutUser, setFavorites } from '../../actions';
+import { setUser, setFavorites } from '../../actions';
 
 class Header extends Component {
   constructor() {
@@ -10,7 +10,7 @@ class Header extends Component {
   }
 
   handleClick = () => {
-    this.props.logoutUser();
+    this.props.setUser({});
     this.props.setFavorites([]);
   }
 
@@ -36,7 +36,7 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  logoutUser: () => dispatch(logoutUser()),
+  setUser: () => dispatch(setUser()),
   setFavorites: () => dispatch(setFavorites())
 }); 
 

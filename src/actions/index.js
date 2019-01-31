@@ -8,10 +8,6 @@ export const setUser = (user) => ({
   user
 });
 
-export const logoutUser = () => ({
-  type: 'LOGOUT_USER'
-});
-
 export const setFavorites = (favorites) => ({
   type: 'SET_FAVORITES',
   favorites
