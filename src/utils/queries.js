@@ -28,7 +28,7 @@ export const loginUser = async (email, password) => {
   }
 }
 
-export const addFavorite = async (movie) => {
+export const postFavorite = async (movie) => {
   try {
     return await postData('/favorites/new', {
       method: 'POST',

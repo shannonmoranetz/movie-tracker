@@ -3,8 +3,8 @@ export const addMovie = (movie) => ({
   movie
 });
 
-export const loginUser = (user) => ({
-  type: 'LOGIN_USER',
+export const setUser = (user) => ({
+  type: 'SET_USER',
   user
 });
 
@@ -12,7 +12,12 @@ export const logoutUser = () => ({
   type: 'LOGOUT_USER'
 });
 
-export const addFavorites = (favorites) => ({
-  type: 'ADD_FAVORITES',
+export const getFavorites = (favorites) => ({
+  type: 'GET_FAVORITES',
   favorites
+});
+
+export const addFavorite = (movie) => ({
+  type: 'ADD_FAVORITE',
+  movie
 });

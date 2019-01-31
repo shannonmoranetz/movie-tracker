@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addFavorite } from '../../utils/queries';
+import { postFavorite } from '../../utils/queries';
+import { addFavorite } from '../../actions';
 
 class MovieCard extends Component {
   constructor() {
@@ -10,21 +11,21 @@ class MovieCard extends Component {
 
   handleClick = async (user) => {
     if (user.name) {
-      const response = await addFavorite({
+      const favorite = {
         ...this.props,
         user_id: user.id,
         movie_id: this.props.id
-      });
-      console.log(response);
+      };
+      await postFavorite(favorite);
+      this.props.addFavorite(favorite)
     } else {
       console.log('else')
-      return
+      return;
     }
-
   }
 
   render() {
-    const { title, poster_path, user } = this.props;
+    const { title, poster_path, user, favorite } = this.props;
     return (
       <div className="MovieCard">
         <h3 className="movie-title">{title}</h3>
@@ -33,14 +34,20 @@ class MovieCard extends Component {
           alt={title}
           className='MovieCard--image'
         />
-        <button onClick={() => this.handleClick(user)}>Add to Favorites</button>
+        <button onClick={() => this.handleClick(user)}>
+          { favorite ? 'Remove from favorites' : 'Add to favorites'}
+        </button>
       </div>
     );
   }
 }
 
 export const mapStateToProps = (state) => ({
-  user: state.user
+  user: state.user,
 });
 
-export default connect(mapStateToProps)(MovieCard);
+export const mapDispatchToProps = (dispatch) => ({
+  addFavorite: (movie) => dispatch(addFavorite(movie))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);

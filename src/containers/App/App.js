@@ -42,7 +42,7 @@ class App extends Component {
                   <Link to='/login'>Login</Link>
                 </div>
               }
-              {this.props.movies.length > 0 ? <MovieContainer match={ match }/> : null};
+              {this.props.movies.length > 0 ? <MovieContainer match={match}/> : null};
             </div>
           );
         }} />

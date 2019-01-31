@@ -4,20 +4,26 @@ import MovieCard from '../../components/MovieCard/MovieCard';
 import Header from '../../containers/Header/Header';
 
 const MovieContainer = ({ movies, favorites, match }) => {
-  console.log(favorites)
+  const favoriteIDs = favorites.map((favorite) => {
+    return favorite.movie_id;
+  })
+
   return (
     <div className="MovieContainer">
       <Header />
       {
         match.path === '/' &&
           movies.map(movie => {
-            return <MovieCard key={movie.id} {...movie} />
+            if (favoriteIDs.includes(movie.id)) {
+              return <MovieCard key={movie.id} {...movie} favorite={true} />
+            }
+            return <MovieCard key={movie.id} {...movie} favorite={false} />
           })
       }
       {
         match.path === '/favorites' &&
         favorites.map(favorite => {
-          return <MovieCard key={favorite.id} {...favorite} />
+          return <MovieCard key={favorite.id} {...favorite} favorite={true} />
         })
       }
     </div>
