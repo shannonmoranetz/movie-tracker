@@ -16,7 +16,13 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
-    const data = await fetchData('https://api.themoviedb.org/3/movie/now_playing', '&language=en-US&page=1');
+    const apiKey = process.env.REACT_APP_API_KEY;
+    const apiUrl = [
+      'https://api.themoviedb.org/3/movie/now_playing?api_key=',
+      apiKey,
+      '&language=en-US&page=1'
+    ];
+    const data = await fetchData(apiUrl.join(''));
     data.results.forEach((movie) => this.props.addMovie(movie));
   }
   

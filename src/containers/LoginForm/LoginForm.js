@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchData } from '../../utils/api';
 import { loginUser } from '../../utils/queries';
 import { loginUser as loginAction } from '../../actions';
 import { Redirect } from 'react-router-dom';
@@ -25,6 +26,10 @@ class LoginForm extends Component {
     try {
       const response = await loginUser(email, password);
       this.props.loginAction(response.data);
+      const userId = response.data.id;
+      await fetchData(`
+        http://localhost:3000/api/users/${userId}/favorites
+      `);
       this.setState({ status: response.status });
     } catch (error) {
       this.setState({ status: 'error' });

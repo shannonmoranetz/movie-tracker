@@ -27,3 +27,17 @@ export const loginUser = async (email, password) => {
     throw Error('Error logging in: ' + error.message);
   }
 }
+
+export const addFavorite = async (movie) => {
+  try {
+    return await postData('/favorites/new', {
+      method: 'POST',
+      body: JSON.stringify(movie),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  } catch (error) {
+    throw Error('Error adding favorite: ' + error.message);
+  }
+}
