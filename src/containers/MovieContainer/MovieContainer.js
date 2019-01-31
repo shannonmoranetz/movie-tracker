@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import Header from '../../containers/Header/Header';
+import { LoginPrompt } from '../../components/LoginPrompt/LoginPrompt';
 
-const MovieContainer = ({ movies, favorites, match }) => {
+const MovieContainer = ({ movies, favorites, match, displayPrompt }) => {
   const favoriteIDs = favorites.map((favorite) => {
     return favorite.movie_id;
   })
@@ -21,6 +22,9 @@ const MovieContainer = ({ movies, favorites, match }) => {
           })
       }
       {
+        displayPrompt && <LoginPrompt />
+      }
+      {
         match.path === '/favorites' &&
         favorites.map(favorite => {
           const favoriteWithId = {...favorite, id: favorite.movie_id}
@@ -36,7 +40,8 @@ const MovieContainer = ({ movies, favorites, match }) => {
 
 const mapStateToProps = (state) => ({
   movies: state.movies,
-  favorites: state.favorites
+  favorites: state.favorites,
+  displayPrompt: state.displayPrompt
 })
 
 export default connect(mapStateToProps)(MovieContainer);
