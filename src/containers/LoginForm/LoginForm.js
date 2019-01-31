@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchData } from '../../utils/api';
 import { loginUser } from '../../utils/queries';
-import { loginUser as loginAction } from '../../actions';
+import { loginUser as loginAction, addFavorites as addFaveAction } from '../../actions';
 import { Redirect } from 'react-router-dom';
 
 class LoginForm extends Component {
@@ -27,9 +27,10 @@ class LoginForm extends Component {
       const response = await loginUser(email, password);
       this.props.loginAction(response.data);
       const userId = response.data.id;
-      await fetchData(`
+      const favorites = await fetchData(`
         http://localhost:3000/api/users/${userId}/favorites
       `);
+      this.props.addFaveAction(favorites.data);
       this.setState({ status: response.status });
     } catch (error) {
       this.setState({ status: 'error' });
@@ -62,7 +63,8 @@ class LoginForm extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  loginAction: (user) => dispatch(loginAction(user))
-})
+  loginAction: (user) => dispatch(loginAction(user)),
+  addFaveAction: (favorites) => dispatch(addFaveAction(favorites))
+});
 
 export default connect(null, mapDispatchToProps)(LoginForm);

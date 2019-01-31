@@ -12,7 +12,7 @@ export const logoutUser = () => ({
   type: 'LOGOUT_USER'
 });
 
-// export const addFavorite = (movie) => ({
-//   type: 'ADD_FAVORITE',
-//   movie
-// });
+export const addFavorites = (favorites) => ({
+  type: 'ADD_FAVORITES',
+  favorites
+});
