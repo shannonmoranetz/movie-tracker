@@ -3,7 +3,7 @@ import { fetchData } from '../../utils/api';
 import { connect } from 'react-redux';
 import { addMovie } from '../../actions';
 import MovieContainer from '../MovieContainer/MovieContainer';
-import SignUpForm from '../../components/SignUpForm/SignUpForm';
+import SignUpForm from '../../containers/SignUpForm/SignUpForm';
 import LoginForm from '../LoginForm/LoginForm';
 import { Route, Link, withRouter } from 'react-router-dom';
 
