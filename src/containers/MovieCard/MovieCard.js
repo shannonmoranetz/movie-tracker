@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchData } from '../../utils/api';
-import { setFavorites, toggleLoginPrompt, currentMovie } from '../../actions';
+import { setFavorites, toggleLoginPrompt } from '../../actions';
 import { Link } from 'react-router-dom';
+
 
 class MovieCard extends Component {
   constructor() {
@@ -61,7 +62,7 @@ class MovieCard extends Component {
           <img
             src={`https://image.tmdb.org/t/p/w500${poster_path}`}
             alt={title}
-            className='MovieCard--image'
+            className="MovieCard--image"
           />
         </Link>
         <button onClick={() => this.handleClick(currentUser)}>
@@ -78,8 +79,7 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   setFavorites: (favorites) => dispatch(setFavorites(favorites)),
-  toggleLoginPrompt: () => dispatch(toggleLoginPrompt()),
-  currentMovie: (movie) => dispatch(currentMovie(movie))
+  toggleLoginPrompt: () => dispatch(toggleLoginPrompt())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);

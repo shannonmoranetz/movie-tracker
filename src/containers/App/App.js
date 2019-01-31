@@ -6,6 +6,8 @@ import MovieContainer from '../MovieContainer/MovieContainer';
 import SignUpForm from '../../containers/SignUpForm/SignUpForm';
 import LoginForm from '../LoginForm/LoginForm';
 import { Route, Link, withRouter } from 'react-router-dom';
+import MovieDetails from '../../components/MovieDetails/MovieDetails';
+
 
 class App extends Component {
   constructor() {
@@ -25,9 +27,10 @@ class App extends Component {
   }
   
   render() {
+    const { currentUser, movies } = this.props;
     return (
       <div className="App">
-        <Link to='/'><h1>Movie Tracker</h1></Link>
+        <Link to='/'><h1 className="h1">Movie Tracker</h1></Link>
         <Route path='/sign-up' component={SignUpForm} />
         <Route path='/login' component={LoginForm} />
         <Route path='/favorites' component={MovieContainer}/>
@@ -35,21 +38,26 @@ class App extends Component {
           return (
             <div className="App--home">
               {
-                !this.props.currentUser.name && 
+                !currentUser.name && 
                 <div className="user-links">
                   <Link to='/sign-up'>Sign Up</Link>
                   <Link to='/login'>Log In</Link>
                 </div>
               }
               {
-                this.props.currentUser.name && 
+                currentUser.name && 
                 <div className="user-links">
                   <Link to='/favorites'>View Favorites</Link>
                 </div>
               }
-              {this.props.movies.length > 0 ? <MovieContainer match={match}/> : null};
+              {movies.length > 0 ? <MovieContainer match={match}/> : null}
             </div>
           );
+        }} />
+        <Route path='/movies/:id' render={({ match }) => {
+          const { id } = match.params;
+          const movie = movies.find(movie => movie.id === parseInt(id));
+          return movie ? <MovieDetails {...movie} /> : null;
         }} />
       </div>
     );
