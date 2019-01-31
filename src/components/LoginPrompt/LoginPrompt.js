@@ -11,7 +11,7 @@ const LoginPrompt = () => {
       <Link to='/sign-up'><button>Sign Up</button></Link>
       <Link to='/login'><button>Log In</button></Link>
     </div>
-  )
+  );
 }
 
 export default LoginPrompt;

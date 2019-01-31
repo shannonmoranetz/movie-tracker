@@ -1,6 +1,6 @@
-export const addMovie = (movie) => ({
-  type: 'ADD_MOVIE',
-  movie
+export const addMovies = (movies) => ({
+  type: 'ADD_MOVIES',
+  movies
 });
 
 export const setUser = (user) => ({
@@ -13,6 +13,7 @@ export const setFavorites = (favorites) => ({
   favorites
 });
 
-export const toggleLoginPrompt = () => ({
-  type: 'TOGGLE_LOGIN_PROMPT'
+export const toggleLoginPrompt = (validity) => ({
+  type: 'TOGGLE_LOGIN_PROMPT',
+  validity
 });

@@ -1,42 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import MovieCard from '../../containers/MovieCard/MovieCard';
+import PropTypes from 'prop-types';
 import Header from '../../containers/Header/Header';
 import LoginPrompt from '../../components/LoginPrompt/LoginPrompt';
-import PropTypes from 'prop-types';
+import MovieCard from '../../containers/MovieCard/MovieCard';
 
-const MovieContainer = ({ movies, favorites, match, showLoginPrompt }) => {
-  const favoriteMovies = movies.filter(movie => favorites.includes(movie.id));
-  return (
-    <div className="MovieContainer">
-      <Header />
-      {
-        match.path === '/' &&
-          movies.map(movie => {
-            if (favorites.includes(movie.id)) {
-              return <MovieCard key={movie.id} {...movie} favorite={true} />
-            }
-            return <MovieCard key={movie.id} {...movie} favorite={false} />
-          })
+class MovieContainer extends Component {
+  getMoviesToDisplay = (movies) => {
+    const { favorites } = this.props;
+    return movies.map(movie => {
+      if (favorites.includes(movie.id)) {
+        return <MovieCard key={movie.id} {...movie} favorite={true} />
       }
-      {
-        showLoginPrompt && <LoginPrompt />
-      }
-      {
-        match.path === '/favorites' && favorites.length > 0 &&
-        favoriteMovies.map(movie => {
-          if (favorites.includes(movie.id)) {
-            return <MovieCard key={movie.id} {...movie} favorite={true} />
-          }
-          return <MovieCard key={movie.id} {...movie} favorite={false} />
-        })
-      }
-      {
-        match.path === '/favorites' && favorites.length === 0 &&
-        <p>There are no favorites to display.</p>
-      }
-    </div>
-  )
+      return <MovieCard key={movie.id} {...movie} favorite={false} />
+    });
+  }
+  
+  render() {
+    const { movies, favorites, match, showLoginPrompt } = this.props;
+    const favoriteMovies = movies.filter(movie => favorites.includes(movie.id));
+    return (
+      <div className="MovieContainer">
+        <Header />
+        {showLoginPrompt && <LoginPrompt />}
+        {match.path === '/' && this.getMoviesToDisplay(movies)}
+        {match.path === '/favorites' && this.getMoviesToDisplay(favoriteMovies)}
+        {match.path === '/favorites' && favorites.length === 0 &&
+          <p>There are no favorites to display.</p>}
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = (state) => ({

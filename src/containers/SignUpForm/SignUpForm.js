@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { fetchData } from '../../utils/api';
-import { Redirect } from 'react-router-dom';
-import { setUser } from '../../actions';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { fetchData } from '../../utils/api';
+import { setUser } from '../../actions';
 
 class SignUpForm extends Component {
   constructor() {

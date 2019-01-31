@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchData } from '../../utils/api';
-import { setUser, setFavorites, toggleLoginPrompt } from '../../actions';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { fetchData } from '../../utils/api';
+import { setUser, setFavorites, toggleLoginPrompt } from '../../actions';
 
 class LoginForm extends Component {
   constructor() {
@@ -36,7 +36,7 @@ class LoginForm extends Component {
       const { name, id } = response.data;
       this.props.setUser({ name, id });
       await this.getFavorites(response.data.id);
-      this.props.toggleLoginPrompt();
+      this.props.toggleLoginPrompt(false);
       this.setState({ status: response.status });
     } catch (error) {
       this.setState({ status: 'error' });
@@ -53,24 +53,16 @@ class LoginForm extends Component {
   render() {
     let { status } = this.state;
     return (
-      <div className="login-form">
+      <form onSubmit={this.handleSubmit} className="login-form">
         <h2>Login</h2>
-        <form onSubmit={this.handleSubmit} className="login-form">
-          <div className="email-section">
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" onChange={this.handleChange} />
-          </div>
-          <div className="password-section">
-            <label htmlFor="password">Password:</label>
-            <input type="password" id="password" onChange={this.handleChange} />
-          </div>
-          <div className="submit-section">
-            <input type="submit" value="login" />
-          </div>
-        </form>
-      {status === 'error' && <p>Email and password do not match.</p>}
-      {status === 'success' && <Redirect to='/' />}
-      </div>
+        <label htmlFor="email">Email:</label>
+        <input type="email" id="email" onChange={this.handleChange} />
+        <label htmlFor="password">Password:</label>
+        <input type="password" id="password" onChange={this.handleChange} />
+        <input type="submit" value="login" />
+        {status === 'error' && <p>Email and password do not match.</p>}
+        {status === 'success' && <Redirect to='/' />}
+      </form>
     );
   }
 }
@@ -78,7 +70,7 @@ class LoginForm extends Component {
 export const mapDispatchToProps = (dispatch) => ({
   setUser: (user) => dispatch(setUser(user)),
   setFavorites: (favorites) => dispatch(setFavorites(favorites)),
-  toggleLoginPrompt: () => dispatch(toggleLoginPrompt())
+  toggleLoginPrompt: (validity) => dispatch(toggleLoginPrompt(validity))
 });
 
 export default connect(null, mapDispatchToProps)(LoginForm);

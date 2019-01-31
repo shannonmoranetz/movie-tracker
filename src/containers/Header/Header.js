@@ -1,32 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setUser, setFavorites } from '../../actions';
 import PropTypes from 'prop-types';
+import { setUser, setFavorites } from '../../actions';
 
 class Header extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
-
   handleClick = () => {
     this.props.setUser({});
     this.props.setFavorites([]);
   }
 
-  render() {
+  getUserLinks = () => {
     const { currentUser } = this.props
+    if (currentUser.name) {
+      return (
+        <div className="user-links">
+          <p>Hello, { currentUser.name }</p>
+          <Link to='/favorites'>View Favorites</Link>
+          <Link to='/' onClick={this.handleClick}>Log Out</Link>
+        </div>
+      );
+    } else {
+      return (
+        <div className="user-links">
+          <Link to='/sign-up'>Sign Up</Link>
+          <Link to='/login'>Log In</Link>
+          <p>Log in to view your favorited movies.</p>
+        </div>
+      );
+    }
+  }
+
+  render() {
     return (
       <header className="Header">
-        {
-          currentUser.name ?
-          <div>
-            <p>Hello, { currentUser.name }</p>
-            <Link to='/' onClick={this.handleClick}>Log Out</Link>
-          </div> :
-          <p>Log in to view your favorited movies.</p>
-        }
+        {this.getUserLinks()}
       </header>
     );
   }

@@ -1,59 +1,36 @@
 import React, { Component } from 'react';
-import { fetchData } from '../../utils/api';
 import { connect } from 'react-redux';
-import { addMovie } from '../../actions';
-import MovieContainer from '../MovieContainer/MovieContainer';
-import SignUpForm from '../../containers/SignUpForm/SignUpForm';
-import LoginForm from '../LoginForm/LoginForm';
 import { Route, Link, withRouter } from 'react-router-dom';
-import MovieDetails from '../../components/MovieDetails/MovieDetails';
 import PropTypes from 'prop-types';
+import { fetchData } from '../../utils/api';
+import { addMovies } from '../../actions';
+import MovieContainer from '../MovieContainer/MovieContainer';
+import MovieDetails from '../../components/MovieDetails/MovieDetails';
+import LoginForm from '../LoginForm/LoginForm';
+import SignUpForm from '../../containers/SignUpForm/SignUpForm';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {};
+  componentDidMount = () => {
+    this.fetchMovies();
   }
-
-  componentDidMount = async () => {
+  
+  fetchMovies = async () => {
     const apiKey = process.env.REACT_APP_API_KEY;
-    const apiUrl = [
-      'https://api.themoviedb.org/3/movie/now_playing?api_key=',
-      apiKey,
-      '&language=en-US&page=1'
-    ];
-    const data = await fetchData(apiUrl.join(''));
-    data.results.forEach((movie) => this.props.addMovie(movie));
+    const url = 
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
+    const data = await fetchData(url);
+    this.props.addMovies(data.results);
   }
   
   render() {
-    const { currentUser, movies } = this.props;
+    const { movies } = this.props;
     return (
       <div className="App">
         <Link to='/'><h1 className="h1">Movie Tracker</h1></Link>
         <Route path='/sign-up' component={SignUpForm} />
         <Route path='/login' component={LoginForm} />
         <Route path='/favorites' component={MovieContainer}/>
-        <Route exact path='/' render={({ match }) => {
-          return (
-            <div className="App--home">
-              {
-                !currentUser.name && 
-                <div className="user-links">
-                  <Link to='/sign-up'>Sign Up</Link>
-                  <Link to='/login'>Log In</Link>
-                </div>
-              }
-              {
-                currentUser.name && 
-                <div className="user-links">
-                  <Link to='/favorites'>View Favorites</Link>
-                </div>
-              }
-              {movies.length > 0 ? <MovieContainer match={match}/> : null}
-            </div>
-          );
-        }} />
+        <Route exact path='/' component={MovieContainer} />
         <Route path='/movies/:id' render={({ match }) => {
           const { id } = match.params;
           const movie = movies.find(movie => movie.id === parseInt(id));
@@ -65,20 +42,18 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  movies: state.movies,
-  currentUser: state.currentUser
+  movies: state.movies
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  addMovie: (movie) => dispatch(addMovie(movie))
+  addMovies: (movie) => dispatch(addMovies(movie))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
 
 App.propTypes = {
   movies: PropTypes.array,
-  currentUser: PropTypes.object,
-  addMovie: PropTypes.func,
+  addMovies: PropTypes.func,
   history: PropTypes.object,
   location: PropTypes.object,
   match: PropTypes.object
