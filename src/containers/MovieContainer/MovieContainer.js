@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import MovieCard from '../../containers/MovieCard/MovieCard';
 import Header from '../../containers/Header/Header';
 import LoginPrompt from '../../components/LoginPrompt/LoginPrompt';
+import PropTypes from 'prop-types';
 
-const MovieContainer = ({ movies, favorites, match, displayPrompt }) => {
+const MovieContainer = ({ movies, favorites, match, showLoginPrompt }) => {
   const favoriteMovies = movies.filter(movie => favorites.includes(movie.id));
   return (
     <div className="MovieContainer">
@@ -19,7 +20,7 @@ const MovieContainer = ({ movies, favorites, match, displayPrompt }) => {
           })
       }
       {
-        displayPrompt && <LoginPrompt />
+        showLoginPrompt && <LoginPrompt />
       }
       {
         match.path === '/favorites' && favorites.length > 0 &&
@@ -45,3 +46,11 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps)(MovieContainer);
+
+MovieContainer.propTypes = {
+  dispatch: PropTypes.func,
+  favorites: PropTypes.array,
+  match: PropTypes.object,
+  movies: PropTypes.array,
+  showLoginPrompt: PropTypes.bool
+};

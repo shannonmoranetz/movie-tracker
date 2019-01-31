@@ -3,6 +3,7 @@ import { fetchData } from '../../utils/api';
 import { Redirect } from 'react-router-dom';
 import { setUser } from '../../actions';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class SignUpForm extends Component {
   constructor() {
@@ -134,3 +135,10 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(null, mapDispatchToProps)(SignUpForm);
+
+SignUpForm.propTypes = {
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object,
+  setUser: PropTypes.func
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const MovieDetails = (props) => {
   const { title, release_date, poster_path, vote_average, overview } = props;
@@ -18,3 +19,20 @@ const MovieDetails = (props) => {
 }
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  adult: PropTypes.bool,
+  backdrop_path: PropTypes.string,
+  genre_ids: PropTypes.array,
+  id: PropTypes.number,
+  original_language: PropTypes.string,
+  original_title: PropTypes.string,
+  overview: PropTypes.string,
+  popularity: PropTypes.number,
+  poster_path: PropTypes.string,
+  release_date: PropTypes.string,
+  title: PropTypes.string,
+  video: PropTypes.bool,
+  vote_average: PropTypes.number,
+  vote_count: PropTypes.number
+}

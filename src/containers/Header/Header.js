@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setUser, setFavorites } from '../../actions';
+import PropTypes from 'prop-types';
 
 class Header extends Component {
   constructor() {
@@ -41,3 +42,9 @@ export const mapDispatchToProps = (dispatch) => ({
 }); 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
+
+Header.propTypes = {
+  currentUser: PropTypes.object,
+  setFavorites: PropTypes.func,
+  setUser: PropTypes.func
+};

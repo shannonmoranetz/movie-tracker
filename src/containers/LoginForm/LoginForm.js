@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchData } from '../../utils/api';
 import { setUser, setFavorites, toggleLoginPrompt } from '../../actions';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class LoginForm extends Component {
   constructor() {
@@ -81,3 +82,12 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(null, mapDispatchToProps)(LoginForm);
+
+LoginForm.propTypes = {
+  setFavorites: PropTypes.func,
+  setUser: PropTypes.func,
+  toggleLoginPrompt: PropTypes.func,
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object
+};

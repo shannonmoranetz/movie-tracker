@@ -7,7 +7,7 @@ import SignUpForm from '../../containers/SignUpForm/SignUpForm';
 import LoginForm from '../LoginForm/LoginForm';
 import { Route, Link, withRouter } from 'react-router-dom';
 import MovieDetails from '../../components/MovieDetails/MovieDetails';
-
+import PropTypes from 'prop-types';
 
 class App extends Component {
   constructor() {
@@ -74,3 +74,12 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+
+App.propTypes = {
+  movies: PropTypes.array,
+  currentUser: PropTypes.object,
+  addMovie: PropTypes.func,
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object
+};

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchData } from '../../utils/api';
 import { setFavorites, toggleLoginPrompt } from '../../actions';
 import { Link } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 
 class MovieCard extends Component {
   constructor() {
@@ -83,3 +83,24 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
+
+MovieCard.propTypes = {
+  adult: PropTypes.bool,
+  backdrop_path: PropTypes.string,
+  currentUser: PropTypes.object,
+  favorite: PropTypes.bool,
+  genre_ids: PropTypes.array,
+  id: PropTypes.number,
+  original_language: PropTypes.string,
+  original_title: PropTypes.string,
+  overview: PropTypes.string,
+  popularity: PropTypes.number,
+  poster_path: PropTypes.string,
+  release_date: PropTypes.string,
+  setFavorites: PropTypes.func,
+  toggleLoginPrompt: PropTypes.func,
+  title: PropTypes.string,
+  video: PropTypes.bool,
+  vote_average: PropTypes.number,
+  vote_count: PropTypes.number
+};
