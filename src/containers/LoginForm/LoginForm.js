@@ -26,9 +26,9 @@ class LoginForm extends Component {
     try {
       const response = await loginUser(email, password);
       this.props.setUser(response.data);
-      const userId = response.data.id;
+      const user_id = response.data.id;
       const favorites = await fetchData(`
-        http://localhost:3000/api/users/${userId}/favorites
+        http://localhost:3000/api/users/${user_id}/favorites
       `);
       this.props.getFavorites(favorites.data);
       this.setState({ status: response.status });

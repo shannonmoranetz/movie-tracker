@@ -16,8 +16,3 @@ export const getFavorites = (favorites) => ({
   type: 'GET_FAVORITES',
   favorites
 });
-
-export const addFavorite = (movie) => ({
-  type: 'ADD_FAVORITE',
-  movie
-});

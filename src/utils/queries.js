@@ -41,3 +41,17 @@ export const postFavorite = async (movie) => {
     throw Error('Error adding favorite: ' + error.message);
   }
 }
+
+export const deleteFavorite = async (user_id, movie_id) => {
+  try {
+    return await postData(`/${user_id}/favorites/${movie_id}`, {
+      method: 'DELETE',
+      body: JSON.stringify({ user_id, movie_id }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  } catch (error) {
+    throw Error('Error deleting favorite: ' + error.message);
+  }
+}

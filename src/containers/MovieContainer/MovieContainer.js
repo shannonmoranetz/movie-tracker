@@ -23,7 +23,11 @@ const MovieContainer = ({ movies, favorites, match }) => {
       {
         match.path === '/favorites' &&
         favorites.map(favorite => {
-          return <MovieCard key={favorite.id} {...favorite} favorite={true} />
+          const favoriteWithId = {...favorite, id: favorite.movie_id}
+          if (favoriteIDs.includes(favorite.movie_id)) {
+            return <MovieCard key={favorite.id} {...favoriteWithId} favorite={true} />
+          }
+          return <MovieCard key={favorite.id} {...favoriteWithId} favorite={false} />
         })
       }
     </div>
