@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchData } from '../../utils/api';
 import { postFavorite, deleteFavorite } from '../../utils/queries';
-import { getFavorites } from '../../actions';
+import { getFavorites, toggleLoginPrompt } from '../../actions';
 
 class MovieCard extends Component {
   constructor() {
@@ -19,8 +19,7 @@ class MovieCard extends Component {
       };
       await this.toggleFavorite(movie);
     } else {
-      // Prompt user to log in to save favorites
-      return;
+      this.props.toggleLoginPrompt()
     }
   }
 
@@ -60,7 +59,8 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  getFavorites: (favorites) => dispatch(getFavorites(favorites))
+  getFavorites: (favorites) => dispatch(getFavorites(favorites)),
+  toggleLoginPrompt: () => dispatch(toggleLoginPrompt())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);

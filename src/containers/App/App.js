@@ -39,7 +39,7 @@ class App extends Component {
                 !this.props.user.name && 
                 <div className="user-links">
                   <Link to='/sign-up'>Sign Up</Link>
-                  <Link to='/login'>Login</Link>
+                  <Link to='/login'>Log In</Link>
                 </div>
               }
               {this.props.movies.length > 0 ? <MovieContainer match={match}/> : null};

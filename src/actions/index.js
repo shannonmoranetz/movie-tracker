@@ -16,3 +16,7 @@ export const getFavorites = (favorites) => ({
   type: 'GET_FAVORITES',
   favorites
 });
+
+export const toggleLoginPrompt = () => ({
+  type: 'TOGGLE_LOGIN_PROMPT'
+})
