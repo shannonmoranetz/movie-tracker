@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchData } from '../../utils/api';
-import { postFavorite, deleteFavorite } from '../../utils/queries';
-import { getFavorites, toggleLoginPrompt } from '../../actions';
+import { setFavorites, toggleLoginPrompt } from '../../actions';
 
 class MovieCard extends Component {
   constructor() {
@@ -26,18 +25,34 @@ class MovieCard extends Component {
   toggleFavorite = async (movie) => {
     const { user_id, movie_id } = movie;
     if (this.props.favorite) {
-      const response = await deleteFavorite(user_id, movie_id);
+      const url = `http://localhost:3000/api/users/${user_id}/favorites/${movie_id}`;
+      const options = {
+        method: 'DELETE',
+        body: JSON.stringify({ user_id, movie_id }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      await fetchData(url, options);
     } else {
-      await postFavorite(movie);
+      const url = 'http://localhost:3000/api/users/favorites/new';
+      const options = {
+        method: 'POST',
+        body: JSON.stringify(movie),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      };
+      await fetchData(url, options);
     }
     const favorites = await fetchData(`
       http://localhost:3000/api/users/${user_id}/favorites
     `);
-    this.props.getFavorites(favorites.data);
+    this.props.setFavorites(favorites.data);
   }
 
   render() {
-    const { title, poster_path, user, favorite } = this.props;
+    const { title, poster_path, currentUser, favorite } = this.props;
     return (
       <div className="MovieCard">
         <h3 className="movie-title">{title}</h3>
@@ -46,7 +61,7 @@ class MovieCard extends Component {
           alt={title}
           className='MovieCard--image'
         />
-        <button onClick={() => this.handleClick(user)}>
+        <button onClick={() => this.handleClick(currentUser)}>
           { favorite ? 'Remove from favorites' : 'Add to favorites'}
         </button>
       </div>
@@ -55,11 +70,11 @@ class MovieCard extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  user: state.user
+  currentUser: state.currentUser
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  getFavorites: (favorites) => dispatch(getFavorites(favorites)),
+  setFavorites: (favorites) => dispatch(setFavorites(favorites)),
   toggleLoginPrompt: () => dispatch(toggleLoginPrompt())
 });
 

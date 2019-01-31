@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import MovieCard from '../../components/MovieCard/MovieCard';
+import MovieCard from '../../containers/MovieCard/MovieCard';
 import Header from '../../containers/Header/Header';
 import { LoginPrompt } from '../../components/LoginPrompt/LoginPrompt';
 
@@ -41,7 +41,7 @@ const MovieContainer = ({ movies, favorites, match, displayPrompt }) => {
 const mapStateToProps = (state) => ({
   movies: state.movies,
   favorites: state.favorites,
-  displayPrompt: state.displayPrompt
+  showLoginPrompt: state.showLoginPrompt
 })
 
 export default connect(mapStateToProps)(MovieContainer);

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchData } from '../../utils/api';
-import { loginUser } from '../../utils/queries';
-import { setUser, getFavorites } from '../../actions';
+import { setUser, setFavorites, toggleLoginPrompt } from '../../actions';
 import { Redirect } from 'react-router-dom';
 
 class LoginForm extends Component {
@@ -24,13 +23,22 @@ class LoginForm extends Component {
     event.preventDefault();
     const { email, password } = this.state;
     try {
-      const response = await loginUser(email, password);
-      this.props.setUser(response.data);
+      const loginUrl = 'http://localhost:3000/api/users';
+      const options = {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      };
+      const response = await fetchData(loginUrl, options);
+      const { name, id } = response.data;
+      this.props.setUser({ name, id });
       const user_id = response.data.id;
-      const favorites = await fetchData(`
-        http://localhost:3000/api/users/${user_id}/favorites
-      `);
-      this.props.getFavorites(favorites.data);
+      const favesUrl = `http://localhost:3000/api/users/${user_id}/favorites`;
+      const favorites = await fetchData(favesUrl);
+      this.props.setFavorites(favorites.data);
+      this.props.toggleLoginPrompt();
       this.setState({ status: response.status });
     } catch (error) {
       this.setState({ status: 'error' });
@@ -64,7 +72,8 @@ class LoginForm extends Component {
 
 export const mapDispatchToProps = (dispatch) => ({
   setUser: (user) => dispatch(setUser(user)),
-  getFavorites: (favorites) => dispatch(getFavorites(favorites))
+  setFavorites: (favorites) => dispatch(setFavorites(favorites)),
+  toggleLoginPrompt: () => dispatch(toggleLoginPrompt())
 });
 
 export default connect(null, mapDispatchToProps)(LoginForm);

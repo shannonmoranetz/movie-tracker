@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
 import { moviesReducer } from './moviesReducer';
-import { userReducer } from './userReducer';
+import { currentUserReducer } from './currentUserReducer';
 import { favoritesReducer } from './favoritesReducer';
-import { displayPromptReducer } from './displayPromptReducer';
+import { showLoginPromptReducer } from './showLoginPromptReducer';
 
 const rootReducer = combineReducers({
   movies: moviesReducer,
-  user: userReducer,
+  currentUser: currentUserReducer,
   favorites: favoritesReducer,
-  displayPrompt: displayPromptReducer
+  showLoginPrompt: showLoginPromptReducer
 });
 
 export default rootReducer;

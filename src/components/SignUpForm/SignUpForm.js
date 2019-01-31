@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { createUser } from '../../utils/queries';
+import { fetchData } from '../../utils/api';
 import { Redirect } from 'react-router-dom';
 
 class SignUpForm extends Component {
@@ -24,7 +24,15 @@ class SignUpForm extends Component {
     const { name, email, passwordOriginal } = this.state;
     if (this.checkMatchingPassword() && this.checkEmailRegex()) {
       try {
-        const response = await createUser(name, email, passwordOriginal);
+        const url = 'http://localhost:3000/api/users/new';
+        const options = {
+          method: 'POST',
+          body: JSON.stringify({ name, email, password: passwordOriginal }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+        const response = await fetchData(url, options);
         this.setState({ status: response.status });
       } catch (error) {
         this.setState({ status: 'error' });

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { fetchData } from '../../utils/api';
 import { connect } from 'react-redux';
-import { addMovie } from '../../actions/index';
+import { addMovie } from '../../actions';
 import MovieContainer from '../MovieContainer/MovieContainer';
-import SignUpForm from '../SignUpForm/SignUpForm';
+import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import LoginForm from '../LoginForm/LoginForm';
 import { Route, Link, withRouter } from 'react-router-dom';
 
@@ -36,7 +36,7 @@ class App extends Component {
             <div className="App--home">
               <Link to='/favorites'>View Favorites</Link>
               {
-                !this.props.user.name && 
+                !this.props.currentUser.name && 
                 <div className="user-links">
                   <Link to='/sign-up'>Sign Up</Link>
                   <Link to='/login'>Log In</Link>
@@ -53,7 +53,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   movies: state.movies,
-  user: state.user
+  currentUser: state.currentUser
 })
 
 const mapDispatchToProps = (dispatch) => ({

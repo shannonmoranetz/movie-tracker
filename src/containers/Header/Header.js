@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions';
 
-const Header = ({ user, logoutUser }) => {
+const Header = ({ currentUser, logoutUser }) => {
   return (
     <header className="Header">
       {
-        user.name ?
+        currentUser.name ?
         <div>
-          <p>Hello, { user.name }</p>
+          <p>Hello, { currentUser.name }</p>
           <a href='' onClick={() => logoutUser()}>Log Out</a>
         </div> :
         <p>Log in to view your favorited movies.</p>
@@ -18,7 +18,7 @@ const Header = ({ user, logoutUser }) => {
 }
 
 export const mapStateToProps = (state) => ({
-  user: state.user
+  currentUser: state.currentUser
 });
 
 export const mapDispatchToProps = (dispatch) => ({

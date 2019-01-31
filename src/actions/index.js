@@ -12,8 +12,8 @@ export const logoutUser = () => ({
   type: 'LOGOUT_USER'
 });
 
-export const getFavorites = (favorites) => ({
-  type: 'GET_FAVORITES',
+export const setFavorites = (favorites) => ({
+  type: 'SET_FAVORITES',
   favorites
 });
 
