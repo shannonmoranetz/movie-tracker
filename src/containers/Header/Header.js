@@ -4,7 +4,7 @@ import { logoutUser } from '../../actions';
 
 const Header = ({ user, logoutUser }) => {
   return (
-    <header>
+    <header className="Header">
       {
         user.name ?
         <div>
