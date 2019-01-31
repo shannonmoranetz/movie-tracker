@@ -1,20 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { logoutUser } from '../../actions';
+import { Link } from 'react-router-dom';
+import { logoutUser, setFavorites } from '../../actions';
 
-const Header = ({ currentUser, logoutUser }) => {
-  return (
-    <header className="Header">
-      {
-        currentUser.name ?
-        <div>
-          <p>Hello, { currentUser.name }</p>
-          <a href='' onClick={() => logoutUser()}>Log Out</a>
-        </div> :
-        <p>Log in to view your favorited movies.</p>
-      }
-    </header>
-  );
+class Header extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
+  handleClick = () => {
+    this.props.logoutUser();
+    this.props.setFavorites([]);
+  }
+
+  render() {
+    const { currentUser } = this.props
+    return (
+      <header className="Header">
+        {
+          currentUser.name ?
+          <div>
+            <p>Hello, { currentUser.name }</p>
+            <Link to='/' onClick={this.handleClick}>Log Out</Link>
+          </div> :
+          <p>Log in to view your favorited movies.</p>
+        }
+      </header>
+    );
+  }
 }
 
 export const mapStateToProps = (state) => ({
@@ -22,7 +36,8 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  logoutUser: () => dispatch(logoutUser())
+  logoutUser: () => dispatch(logoutUser()),
+  setFavorites: () => dispatch(setFavorites())
 }); 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

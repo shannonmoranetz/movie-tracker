@@ -34,12 +34,17 @@ class App extends Component {
         <Route exact path='/' render={({ match }) => {
           return (
             <div className="App--home">
-              <Link to='/favorites'>View Favorites</Link>
               {
                 !this.props.currentUser.name && 
                 <div className="user-links">
                   <Link to='/sign-up'>Sign Up</Link>
                   <Link to='/login'>Log In</Link>
+                </div>
+              }
+              {
+                this.props.currentUser.name && 
+                <div className="user-links">
+                  <Link to='/favorites'>View Favorites</Link>
                 </div>
               }
               {this.props.movies.length > 0 ? <MovieContainer match={match}/> : null};

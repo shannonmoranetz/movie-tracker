@@ -5,9 +5,8 @@ import Header from '../../containers/Header/Header';
 import { LoginPrompt } from '../../components/LoginPrompt/LoginPrompt';
 
 const MovieContainer = ({ movies, favorites, match, displayPrompt }) => {
-  const favoriteIDs = favorites.map((favorite) => {
-    return favorite.movie_id;
-  })
+
+  const favoriteMovies = movies.filter(movie => favorites.includes(movie.id))
 
   return (
     <div className="MovieContainer">
@@ -15,7 +14,7 @@ const MovieContainer = ({ movies, favorites, match, displayPrompt }) => {
       {
         match.path === '/' &&
           movies.map(movie => {
-            if (favoriteIDs.includes(movie.id)) {
+            if (favorites.includes(movie.id)) {
               return <MovieCard key={movie.id} {...movie} favorite={true} />
             }
             return <MovieCard key={movie.id} {...movie} favorite={false} />
@@ -25,14 +24,17 @@ const MovieContainer = ({ movies, favorites, match, displayPrompt }) => {
         displayPrompt && <LoginPrompt />
       }
       {
-        match.path === '/favorites' &&
-        favorites.map(favorite => {
-          const favoriteWithId = {...favorite, id: favorite.movie_id}
-          if (favoriteIDs.includes(favorite.movie_id)) {
-            return <MovieCard key={favorite.id} {...favoriteWithId} favorite={true} />
+        match.path === '/favorites' && favorites.length > 0 &&
+        favoriteMovies.map(movie => {
+          if (favorites.includes(movie.movie_id)) {
+            return <MovieCard key={movie.id} {...movie} favorite={true} />
           }
-          return <MovieCard key={favorite.id} {...favoriteWithId} favorite={false} />
+          return <MovieCard key={movie.id} {...movie} favorite={false} />
         })
+      }
+      {
+        match.path === '/favorites' && favorites.length === 0 &&
+        <p>There are no favorites to display.</p>
       }
     </div>
   )

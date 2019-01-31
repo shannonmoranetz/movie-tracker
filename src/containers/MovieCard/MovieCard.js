@@ -45,10 +45,10 @@ class MovieCard extends Component {
       };
       await fetchData(url, options);
     }
-    const favorites = await fetchData(`
-      http://localhost:3000/api/users/${user_id}/favorites
-    `);
-    this.props.setFavorites(favorites.data);
+    const favesUrl = `http://localhost:3000/api/users/${user_id}/favorites`;
+    const response = await fetchData(favesUrl);
+    const favorites = response.data.map(favorite => favorite.movie_id);
+    this.props.setFavorites(favorites);
   }
 
   render() {
