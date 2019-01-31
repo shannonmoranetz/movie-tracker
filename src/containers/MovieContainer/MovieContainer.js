@@ -15,7 +15,9 @@ const MovieContainer = ({ movies, favorites, match, displayPrompt }) => {
       <Header />
       <Route path='/movies/:id' render={({ match }) => {
         const { id } = match.params;
+        console.log(match)
         const movie = movies.find(movie => movie.id === parseInt(id));
+        console.log(movie)
         return movie ? <MovieDetails {...movie} /> : null;
         }} />
       {

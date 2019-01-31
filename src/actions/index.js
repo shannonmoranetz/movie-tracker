@@ -16,3 +16,7 @@ export const setFavorites = (favorites) => ({
 export const toggleLoginPrompt = () => ({
   type: 'TOGGLE_LOGIN_PROMPT'
 })
+
+export const currentMovie = () => ({
+  type: 'CURRENT_MOVIE'
+})

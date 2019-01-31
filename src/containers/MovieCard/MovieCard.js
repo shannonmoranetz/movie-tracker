@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchData } from '../../utils/api';
-import { setFavorites, toggleLoginPrompt } from '../../actions';
+import { setFavorites, toggleLoginPrompt, currentMovie } from '../../actions';
 import { Link } from 'react-router-dom';
 
 class MovieCard extends Component {
@@ -78,7 +78,8 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   setFavorites: (favorites) => dispatch(setFavorites(favorites)),
-  toggleLoginPrompt: () => dispatch(toggleLoginPrompt())
+  toggleLoginPrompt: () => dispatch(toggleLoginPrompt()),
+  currentMovie: (movie) => dispatch(currentMovie(movie))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
