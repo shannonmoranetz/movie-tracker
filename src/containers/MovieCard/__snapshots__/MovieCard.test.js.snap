@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieCard MovieCard container should properly render the component elements 1`] = `
+<div
+  className="MovieCard"
+>
+  <h3
+    className="movie-title"
+  >
+    frozen
+  </h3>
+  <Link
+    replace={false}
+    to="/movies/123456"
+  >
+    <img
+      alt="frozen"
+      className="MovieCard--image"
+      src="https://image.tmdb.org/t/p/w500url/imgur"
+    />
+  </Link>
+  <button
+    className="favorite-button"
+    onClick={[Function]}
+  >
+    Remove from favorites
+  </button>
+</div>
+`;

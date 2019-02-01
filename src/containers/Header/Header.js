@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { setUser, setFavorites } from '../../actions';
 
-class Header extends Component {
+export class Header extends Component {
   handleClick = () => {
     this.props.setUser({});
     this.props.setFavorites([]);
@@ -16,8 +16,8 @@ class Header extends Component {
       return (
         <div className="user-links">
           <p>Hello, { currentUser.name }</p>
-          <Link to='/favorites'>View Favorites</Link>
-          <Link to='/' onClick={this.handleClick}>Log Out</Link>
+          <Link to='/favorites' className="favorites-link">View Favorites</Link>
+          <Link to='/' className="logout-link" onClick={this.handleClick}>Log Out</Link>
         </div>
       );
     } else {

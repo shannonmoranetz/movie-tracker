@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { fetchData } from '../../utils/api';
 import { setFavorites, toggleLoginPrompt } from '../../actions';
 
-class MovieCard extends Component {
+export class MovieCard extends Component {
   handleClick = async (user) => {
     if (user.name) {
       const movie = {
@@ -60,7 +60,7 @@ class MovieCard extends Component {
             className="MovieCard--image"
           />
         </Link>
-        <button onClick={() => this.handleClick(currentUser)}>
+        <button className="favorite-button" onClick={() => this.handleClick(currentUser)}>
           { favorite ? 'Remove from favorites' : 'Add to favorites'}
         </button>
       </div>

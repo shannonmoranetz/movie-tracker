@@ -9,7 +9,7 @@ import MovieDetails from '../../components/MovieDetails/MovieDetails';
 import LoginForm from '../LoginForm/LoginForm';
 import SignUpForm from '../../containers/SignUpForm/SignUpForm';
 
-class App extends Component {
+export class App extends Component {
   componentDidMount = () => {
     this.fetchMovies();
   }

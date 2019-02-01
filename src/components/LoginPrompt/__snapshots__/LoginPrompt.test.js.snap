@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginPrompt LoginPrompt component should properly render the component elements 1`] = `
+<div
+  className="login-prompt"
+>
+  <Link
+    replace={false}
+    to="/"
+  >
+    <button>
+      X
+    </button>
+  </Link>
+  <h3
+    className="prompt-text"
+  >
+    You must be logged in to save favorites.
+  </h3>
+  <Link
+    replace={false}
+    to="/sign-up"
+  >
+    <button>
+      Sign Up
+    </button>
+  </Link>
+  <Link
+    replace={false}
+    to="/login"
+  >
+    <button>
+      Log In
+    </button>
+  </Link>
+</div>
+`;

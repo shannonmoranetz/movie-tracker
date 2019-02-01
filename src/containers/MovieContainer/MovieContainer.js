@@ -5,7 +5,7 @@ import Header from '../../containers/Header/Header';
 import LoginPrompt from '../../components/LoginPrompt/LoginPrompt';
 import MovieCard from '../../containers/MovieCard/MovieCard';
 
-class MovieContainer extends Component {
+export class MovieContainer extends Component {
   getMoviesToDisplay = (movies) => {
     const { favorites } = this.props;
     return movies.map(movie => {

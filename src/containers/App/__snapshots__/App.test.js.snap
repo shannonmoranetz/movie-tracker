@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App App container should properly render the component elements 1`] = `
+<div
+  className="App"
+>
+  <Link
+    replace={false}
+    to="/"
+  >
+    <h1
+      className="h1"
+    >
+      Movie Tracker
+    </h1>
+  </Link>
+  <Route
+    component={[Function]}
+    path="/sign-up"
+  />
+  <Route
+    component={[Function]}
+    path="/login"
+  />
+  <Route
+    component={[Function]}
+    path="/favorites"
+  />
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/"
+  />
+  <Route
+    path="/movies/:id"
+    render={[Function]}
+  />
+</div>
+`;

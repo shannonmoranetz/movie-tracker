@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignUpForm SignUpForm container should properly render the component elements 1`] = `
+<form
+  className="form"
+  onSubmit={[Function]}
+>
+  <h2>
+    Sign Up
+  </h2>
+  <div>
+    <label
+      htmlFor="name"
+    >
+      Name:
+    </label>
+    <input
+      id="name"
+      onChange={[Function]}
+      required={true}
+      value=""
+    />
+    <label
+      htmlFor="email"
+    >
+      Email
+    </label>
+    <input
+      className="input--red"
+      id="email"
+      onChange={[Function]}
+      required={true}
+      value=""
+    />
+    <p>
+      Enter a valid email
+    </p>
+  </div>
+  <div
+    className="div--password"
+  >
+    <label
+      htmlFor="passwordOriginal"
+    >
+      Password
+    </label>
+    <input
+      id="passwordOriginal"
+      onChange={[Function]}
+      required={true}
+      type="password"
+      value=""
+    />
+    <label
+      htmlFor="passwordConfirmed"
+    >
+      Confirm Password
+    </label>
+    <input
+      className={null}
+      id="passwordConfirmed"
+      onChange={[Function]}
+      required={true}
+      type="password"
+      value=""
+    />
+  </div>
+  <input
+    type="submit"
+    value="Submit"
+  />
+</form>
+`;
