@@ -1,20 +1,19 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import SignUpForm from './SignUpForm';
+import { SignUpForm } from './SignUpForm';
 
-const checkEmailRegexMock = jest.fn();
-const handleSubmitMock = jest.fn();
-const handleChangeMock = jest.fn();
-const getNameAndEmailInputFieldsMock = jest.fn();
+const mockProps = {
+  history: {},
+  location: {},
+  match: {},
+  setUser: jest.fn()
+}
 
 describe('SignUpForm', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(
-      <SignUpForm checkEmailRegex={checkEmailRegexMock}
-                  handleSubmit={handleSubmitMock}
-                  handleChange={handleChangeMock}
-                  getNameAndEmailInputFields={getNameAndEmailInputFieldsMock} />
+      <SignUpForm {...mockProps} />
     );
   });
   
@@ -23,7 +22,7 @@ describe('SignUpForm', () => {
       expect(wrapper).toMatchSnapshot();
     });
   
-    it.skip('should have the proper default state', () => {
+    it('should have the proper default state', () => {
       expect(wrapper.state()).toEqual({
         name: '',
         email: '',
@@ -33,36 +32,34 @@ describe('SignUpForm', () => {
       })
     })
   
-    it.skip('should set state based on an input field value when handleChange is invoked', () => {
+    it('should set state based on an input field when text is typed', () => {
       const event = {target: {id: 'name', value: 'shannon'}};
-      wrapper.find('.name-input').simulate('change', event);
-      expect(wrapper.state()).toEqual({ name: 'shannon' });
+      wrapper.find('#name').simulate('change', event);
+      expect(wrapper.state('name')).toEqual('shannon');
     });
     
-    it.skip('should evaluate true if password state values are equal when checkMatchingPassword is invoked', () => {
+    it('should return true when passwords match', () => {
       const mockPasswordMatch = wrapper.instance().checkMatchingPassword();
       expect(mockPasswordMatch).toEqual(true);
     });
-    
-    it.skip('should call test with the correct parameters when checkEmailRegex is invoked', () => {
-      const mockEmail = 'email@test.io';
-      wrapper.instance().checkMatchingPassword(mockEmail);
-      expect(checkEmailRegexMock).toBeCalledWith(mockEmail);
-    });
-  
-    it.skip('should call handleSubmit when form is submitted', () => {
-      wrapper.find('form').simulate('submit');
-      expect(handleSubmitMock).toBeCalled();
+
+    it('should return false when passwords do not match', () => {
+      const event = {target: {id: 'passwordOriginal', value: 'password123'}};
+      wrapper.find('#passwordOriginal').simulate('change', event);
+      const mockPasswordMatch = wrapper.instance().checkMatchingPassword();
+      expect(mockPasswordMatch).toEqual(false);
     });
     
-    it.skip('should call handleChange on input fields change ', () => {
-      wrapper.find('.password-original-input').simulate('change');
-      expect(handleChangeMock).toBeCalled();
+    it('should return true when a user enters a valid email', () => {
+      const mockEmail = 'valid@test.io';
+      const result = wrapper.instance().checkEmailRegex(mockEmail);
+      expect(result).toEqual(true);
     });
-    
-    it.skip('should call getNameAndEmailInputFields every render', () => {
-      wrapper.update();
-      expect(getNameAndEmailInputFieldsMock).toBeCalled();
+
+    it('should return false when a user enters a invalid email', () => {
+      const mockEmail = 'invalid-email';
+      const result = wrapper.instance().checkEmailRegex(mockEmail);
+      expect(result).toEqual(false);
     });
   });
 

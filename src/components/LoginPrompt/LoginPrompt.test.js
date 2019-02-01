@@ -15,7 +15,4 @@ describe('LoginPrompt', () => {
       expect(wrapper).toMatchSnapshot();
     });
   });
-  
-  describe('mapDispatchToProps', () => {});
-
 });

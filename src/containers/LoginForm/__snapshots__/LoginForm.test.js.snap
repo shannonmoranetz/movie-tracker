@@ -1,7 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoginForm LoginForm container should properly render the component elements 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<form
+  className="login-form"
+  onSubmit={[Function]}
+>
+  <h2>
+    Login
+  </h2>
+  <label
+    htmlFor="email"
+  >
+    Email:
+  </label>
+  <input
+    className="email-input"
+    id="email"
+    onChange={[Function]}
+    type="email"
+  />
+  <label
+    htmlFor="password"
+  >
+    Password:
+  </label>
+  <input
+    id="password"
+    onChange={[Function]}
+    type="password"
+  />
+  <input
+    type="submit"
+    value="login"
+  />
+</form>
 `;

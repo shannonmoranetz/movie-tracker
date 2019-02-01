@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { fetchData } from '../../utils/api';
 import { setFavorites, toggleLoginPrompt } from '../../actions';
 
-class MovieCard extends Component {
+export class MovieCard extends Component {
   handleClick = async (user) => {
     if (user.name) {
       const movie = {

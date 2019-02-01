@@ -17,7 +17,7 @@ export class Header extends Component {
         <div className="user-links">
           <p>Hello, { currentUser.name }</p>
           <Link to='/favorites' className="favorites-link">View Favorites</Link>
-          <Link to='/' className="home-link" onClick={this.handleClick}>Log Out</Link>
+          <Link to='/' className="logout-link" onClick={this.handleClick}>Log Out</Link>
         </div>
       );
     } else {

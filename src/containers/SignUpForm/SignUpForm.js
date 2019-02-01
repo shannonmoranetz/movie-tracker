@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { fetchData } from '../../utils/api';
 import { setUser } from '../../actions';
 
-class SignUpForm extends Component {
+export class SignUpForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -25,7 +25,7 @@ class SignUpForm extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     const { name, email, passwordOriginal } = this.state;
-    if (this.checkMatchingPassword() && this.checkEmailRegex()) {
+    if (this.checkMatchingPassword() && this.checkEmailRegex(email)) {
       try {
         const url = 'http://localhost:3000/api/users/new';
         const options = {
@@ -58,9 +58,9 @@ class SignUpForm extends Component {
     this.props.setUser({ name, id });
   }
 
-  checkEmailRegex = () => {
+  checkEmailRegex = (email) => {
     const emailRegex = /[a-z]\w+@[a-z]\w+\.[a-z]\w+/;
-    return emailRegex.test(this.state.email);
+    return emailRegex.test(email);
   }
 
   checkMatchingPassword = () => {
@@ -70,11 +70,11 @@ class SignUpForm extends Component {
 
   getNameAndEmailInputFields = () => {
     const { name, email } = this.state;
-    const inputStyle = this.checkEmailRegex() ? null : 'input--red';
+    const inputStyle = this.checkEmailRegex(email) ? null : 'input--red';
     return (
       <div>
         <label htmlFor="name">Name:</label>
-        <input id="name" className="name-input" value={name} onChange={this.handleChange} required />
+        <input id="name" value={name} onChange={this.handleChange} required />
         <label htmlFor="email">Email</label>
         <input
           id="email"
@@ -83,7 +83,7 @@ class SignUpForm extends Component {
           required
           className={inputStyle}
         />
-        {!this.checkEmailRegex() && <p>Enter a valid email</p>}
+        {!this.checkEmailRegex(email) && <p>Enter a valid email</p>}
       </div>
     );
   }
@@ -96,7 +96,6 @@ class SignUpForm extends Component {
         <label htmlFor="passwordOriginal">Password</label>
         <input 
           id="passwordOriginal"
-          className="password-original-input"
           value={passwordOriginal}
           onChange={this.handleChange}
           type="password" 

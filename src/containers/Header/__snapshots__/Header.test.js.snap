@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header Header container should properly render the component elements 1`] = `
+exports[`Header Header container should match the snapshot when the user is not logged in 1`] = `
 <header
   className="Header"
 >
@@ -19,13 +19,39 @@ exports[`Header Header container should properly render the component elements 1
       View Favorites
     </Link>
     <Link
-      className="home-link"
+      className="logout-link"
       onClick={[Function]}
       replace={false}
       to="/"
     >
       Log Out
     </Link>
+  </div>
+</header>
+`;
+
+exports[`Header Header container should match the snapshot when the user is not logged in 2`] = `
+<header
+  className="Header"
+>
+  <div
+    className="user-links"
+  >
+    <Link
+      replace={false}
+      to="/sign-up"
+    >
+      Sign Up
+    </Link>
+    <Link
+      replace={false}
+      to="/login"
+    >
+      Log In
+    </Link>
+    <p>
+      Log in to view your favorited movies.
+    </p>
   </div>
 </header>
 `;

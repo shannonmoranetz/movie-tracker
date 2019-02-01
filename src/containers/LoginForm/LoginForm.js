@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { fetchData } from '../../utils/api';
 import { setUser, setFavorites, toggleLoginPrompt } from '../../actions';
 
-class LoginForm extends Component {
+export class LoginForm extends Component {
   constructor() {
     super();
     this.state = {

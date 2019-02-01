@@ -1,33 +1,28 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import MovieContainer from './MovieContainer';
+import { MovieContainer } from './MovieContainer';
+
+const mockProps = {
+  movies: [{ id: 1, favorite: false }, { id: 2, favorite: true }],
+  dispatch: jest.fn(),
+  favorites: [123456],
+  match: { path: '/' },
+  showLoginPrompt: false
+}
 
 describe('MovieContainer', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(
-      <MovieContainer />
+      <MovieContainer {...mockProps} />
     );
   });
 
   describe('MovieContainer container', () => {
-    it('should properly render the component elements', () => {
+    it('should match snapshot when path is / and showLoginPrompt is false', () => {
       expect(wrapper).toMatchSnapshot();
-    });
-  
-    it.skip('should return all matching movies when getMoviesToDisplay is invoked', () => {
-      const mockMovies = [{id: 1, favorite: false}];
-      const expected = wrapper.instance().getMoviesToDisplay(mockMovies);
-      expect(mockMovies).toMatchObject(expected);
-    });
-  
-    it.skip('should return all matching favorite movies by their id when getMoviesToDisplay is invoked', () => {
-      const mockMovies = [{id: 1, favorite: false}, {id: 2, favorite: true}];
-      const expected = wrapper.instance().getMoviesToDisplay(mockMovies);
-      expect(mockMovies).toMatchObject(expected);
     });
   });
 
   describe('mapStateToProps', () => {});
-  
 });

@@ -4,35 +4,45 @@ import { Header } from './Header';
 
 const setUserMock = jest.fn();
 const setFavoritesMock = jest.fn();
-const mockCurrentUser = { name: 'shannon' }
-const handleClickMock = jest.fn();
+let mockCurrentUser = { name: 'shannon' }
 
 describe('Header', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(
-      <Header setUser={setUserMock} 
-              setFavorites={setFavoritesMock} 
-              currentUser={mockCurrentUser}/>
+      <Header 
+        setUser={setUserMock} 
+        setFavorites={setFavoritesMock} 
+        currentUser={mockCurrentUser} 
+      />
     );
   });
 
   describe('Header container', () => {
-    it('should properly render the component elements', () => {
+    it('should match the snapshot when the user is not logged in', () => {
       expect(wrapper).toMatchSnapshot();
     });
-  
+    
     it('should call setUser and setFavorites when handleClick is invoked', () => {
-      wrapper.instance().handleClick();
+      wrapper.find('.logout-link').simulate('click');
       expect(setUserMock).toBeCalled();
       expect(setFavoritesMock).toBeCalled();
     });
-  
-    it.skip('should call handleClick upon clicking clicking the homepage Link element', () => {
-      wrapper.find('.home-link').simulate('click');
-      expect(handleClickMock).toBeCalled();
+
+    it('should match the snapshot when the user is not logged in', () => {
+      mockCurrentUser = {};
+      wrapper = shallow(
+        <Header 
+          setUser={setUserMock} 
+          setFavorites={setFavoritesMock} 
+          currentUser={mockCurrentUser} 
+        />
+      );
+      expect(wrapper).toMatchSnapshot();
     });
   });
+
+
 
   describe('mapStateToProps', () => {});
 

@@ -1,7 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieContainer MovieContainer container should properly render the component elements 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+exports[`MovieContainer MovieContainer container should match snapshot when path is / and showLoginPrompt is false 1`] = `
+<div
+  className="MovieContainer"
+>
+  <Connect(Header) />
+  <Connect(MovieCard)
+    favorite={false}
+    id={1}
+    key="1"
+  />
+  <Connect(MovieCard)
+    favorite={false}
+    id={2}
+    key="2"
+  />
+</div>
 `;
