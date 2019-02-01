@@ -27,7 +27,7 @@ describe('LoginForm', () => {
       });
     });
   
-    it.skip('handleChange should set state of input fields in state', () => {
+    it.skip('should set state of input fields in state when handleChange is invoked', () => {
       const event = {target: {id: 'email', value: 'email@test.io'}};
       wrapper.find('.email-input').simulate('change', event);
       expect(wrapper.state()).toEqual({ email: 'email@test.io' });

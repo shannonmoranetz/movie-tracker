@@ -15,13 +15,13 @@ describe('MovieContainer', () => {
       expect(wrapper).toMatchSnapshot();
     });
   
-    it.skip('getMoviesToDisplay should return all matching movies', () => {
+    it.skip('should return all matching movies when getMoviesToDisplay is invoked', () => {
       const mockMovies = [{id: 1, favorite: false}];
       const expected = wrapper.instance().getMoviesToDisplay(mockMovies);
       expect(mockMovies).toMatchObject(expected);
     });
   
-    it.skip('getMoviesToDisplay should return all matching favorite movies by their id', () => {
+    it.skip('should return all matching favorite movies by their id when getMoviesToDisplay is invoked', () => {
       const mockMovies = [{id: 1, favorite: false}, {id: 2, favorite: true}];
       const expected = wrapper.instance().getMoviesToDisplay(mockMovies);
       expect(mockMovies).toMatchObject(expected);

@@ -21,7 +21,7 @@ describe('Header', () => {
       expect(wrapper).toMatchSnapshot();
     });
   
-    it.skip('handleClick should call setUser and setFavorites', () => {
+    it('should call setUser and setFavorites when handleClick is invoked', () => {
       wrapper.instance().handleClick();
       expect(setUserMock).toBeCalled();
       expect(setFavoritesMock).toBeCalled();
