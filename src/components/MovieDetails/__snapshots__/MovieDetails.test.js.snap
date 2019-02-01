@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieDetails should properly render the component elements 1`] = `
+<div
+  className="MovieDetails"
+>
+  <h3
+    className="h3"
+  />
+  <img
+    className="MovieDetails--image"
+    src="https://image.tmdb.org/t/p/w500undefined"
+  />
+  <p />
+  <p>
+    Release Date: 
+  </p>
+  <p>
+    Rating: 
+  </p>
+</div>
+`;
