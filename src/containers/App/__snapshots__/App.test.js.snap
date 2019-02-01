@@ -5,15 +5,3 @@ exports[`App App container should properly render the component elements 1`] = `
   <Component />
 </Route>
 `;
-
-exports[`App container should properly render the component elements 1`] = `
-<Route>
-  <Component />
-</Route>
-`;
-
-exports[`App should properly render the component elements 1`] = `
-<Route>
-  <Component />
-</Route>
-`;

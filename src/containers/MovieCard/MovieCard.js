@@ -60,7 +60,7 @@ class MovieCard extends Component {
             className="MovieCard--image"
           />
         </Link>
-        <button onClick={() => this.handleClick(currentUser)}>
+        <button className="favorite-button" onClick={() => this.handleClick(currentUser)}>
           { favorite ? 'Remove from favorites' : 'Add to favorites'}
         </button>
       </div>

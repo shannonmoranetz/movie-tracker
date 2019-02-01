@@ -5,15 +5,3 @@ exports[`SignUpForm SignUpForm container should properly render the component el
   <Component />
 </ContextConsumer>
 `;
-
-exports[`SignUpForm container should properly render the component elements 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
-`;
-
-exports[`SignUpForm should properly render the component elements 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
-`;

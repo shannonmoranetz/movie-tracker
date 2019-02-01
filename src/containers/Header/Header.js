@@ -16,8 +16,8 @@ class Header extends Component {
       return (
         <div className="user-links">
           <p>Hello, { currentUser.name }</p>
-          <Link to='/favorites'>View Favorites</Link>
-          <Link to='/' onClick={this.handleClick}>Log Out</Link>
+          <Link to='/favorites' className="favorites-link">View Favorites</Link>
+          <Link to='/' className="home-link" onClick={this.handleClick}>Log Out</Link>
         </div>
       );
     } else {

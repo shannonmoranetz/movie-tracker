@@ -2,11 +2,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import MovieCard from './MovieCard';
 
+const handleClickMock = jest.fn();
+
 describe('MovieCard', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(
-      <MovieCard />
+      <MovieCard handleClick={handleClickMock}/>
     );
   });
 
@@ -15,7 +17,10 @@ describe('MovieCard', () => {
       expect(wrapper).toMatchSnapshot();
     });
   
-    it.skip('should call handleClick when a movie image is clicked', () => {});
+    it.skip('should call handleClick when a movie image is clicked', () => {
+      wrapper.find('.favorite-button').simulate('click');
+      expect(handleClickMock).toBeCalled();
+    });
   });
 
   describe('mapStateToProps', () => {});

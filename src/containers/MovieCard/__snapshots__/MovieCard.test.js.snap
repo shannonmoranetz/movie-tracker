@@ -5,15 +5,3 @@ exports[`MovieCard MovieCard container should properly render the component elem
   <Component />
 </ContextConsumer>
 `;
-
-exports[`MovieCard container should properly render the component elements 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
-`;
-
-exports[`MovieCard should properly render the component elements 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
-`;
