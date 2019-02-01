@@ -1,9 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Header from './Header';
+import { Header } from './Header';
 
 const setUserMock = jest.fn();
 const setFavoritesMock = jest.fn();
+const mockCurrentUser = { name: 'shannon' }
 const handleClickMock = jest.fn();
 
 describe('Header', () => {
@@ -12,7 +13,7 @@ describe('Header', () => {
     wrapper = shallow(
       <Header setUser={setUserMock} 
               setFavorites={setFavoritesMock} 
-              handleClick={handleClickMock} />
+              currentUser={mockCurrentUser}/>
     );
   });
 

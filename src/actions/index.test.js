@@ -29,7 +29,7 @@ describe('actions', () => {
     };
     const result = actions.setFavorites(favorites);
     expect(result).toEqual(expected);
-  });
+  }); 
 
   it('should return a type of TOGGLE_LOGIN_PROMPT, with a validity value', () => {
     const validity = false;

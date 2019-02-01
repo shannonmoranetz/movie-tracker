@@ -1,7 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header Header container should properly render the component elements 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<header
+  className="Header"
+>
+  <div
+    className="user-links"
+  >
+    <p>
+      Hello, 
+      shannon
+    </p>
+    <Link
+      className="favorites-link"
+      replace={false}
+      to="/favorites"
+    >
+      View Favorites
+    </Link>
+    <Link
+      className="home-link"
+      onClick={[Function]}
+      replace={false}
+      to="/"
+    >
+      Log Out
+    </Link>
+  </div>
+</header>
 `;

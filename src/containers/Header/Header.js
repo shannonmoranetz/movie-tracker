@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { setUser, setFavorites } from '../../actions';
 
-class Header extends Component {
+export class Header extends Component {
   handleClick = () => {
     this.props.setUser({});
     this.props.setFavorites([]);
