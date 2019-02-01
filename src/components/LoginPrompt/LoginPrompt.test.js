@@ -4,14 +4,18 @@ import LoginPrompt from './LoginPrompt.js';
 
 describe('LoginPrompt', () => {
   let wrapper;
-
   beforeEach(() => {
     wrapper = shallow(
       <LoginPrompt />
     );
   });
 
-  it('should properly render the component elements', () => {
-    expect(wrapper).toMatchSnapshot();
+  describe('LoginPrompt component', () => {
+    it('should properly render the component elements', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
+  
+  describe('mapDispatchToProps', () => {});
+
 });

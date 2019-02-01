@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieContainer MovieContainer container should properly render the component elements 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
+
+exports[`MovieContainer container should properly render the component elements 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
+
+exports[`MovieContainer should properly render the component elements 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;

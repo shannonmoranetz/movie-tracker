@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieDetails should properly render the component elements 1`] = `
+exports[`MovieDetails component should properly render the component elements 1`] = `
 <div
   className="MovieDetails"
 >

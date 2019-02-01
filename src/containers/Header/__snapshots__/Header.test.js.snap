@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Header container should properly render the component elements 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
+
+exports[`Header container should properly render the component elements 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
+
+exports[`Header should properly render the component elements 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;

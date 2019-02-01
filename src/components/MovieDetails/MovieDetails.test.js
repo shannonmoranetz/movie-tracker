@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import MovieDetails from './MovieDetails.js';
 
-describe('MovieDetails', () => {
+describe('MovieDetails component', () => {
   let wrapper;
 
   beforeEach(() => {

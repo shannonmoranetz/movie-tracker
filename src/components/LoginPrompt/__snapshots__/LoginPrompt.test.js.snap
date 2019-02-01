@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LoginPrompt should properly render the component elements 1`] = `
+exports[`LoginPrompt LoginPrompt component should properly render the component elements 1`] = `
 <div
   className="login-prompt"
 >

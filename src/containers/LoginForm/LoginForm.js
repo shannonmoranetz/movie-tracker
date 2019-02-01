@@ -12,7 +12,7 @@ class LoginForm extends Component {
       email: '',
       password: '',
       status: ''
-    };
+    }
   }
 
   handleChange = (event) => {
