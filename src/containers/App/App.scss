@@ -1,3 +1,61 @@
-.h1 {
-  text-align: center;
+html {
+  height: 100%;
+  width: 100%;
 }
+
+body {
+  background-image: url("images/background.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+a {
+  text-decoration: none;
+  color: $text-color;
+}
+
+a:active {
+  color: $steel-grey;
+}
+
+.App {
+  font-family: $body-font;
+  color: $body-font;
+}
+
+.title-section {
+  text-align: center;
+  padding: 0px 10px;
+  background-image: url("images/title-background.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: $heading-font;
+  border-top: 4px solid $border-color;
+}
+
+.app-title {
+  display: inline-block;
+  padding-top: 20px;
+  font-size: 60px;
+  margin: 0px;
+  text-shadow: 2px 2px $powder-blue;
+  font-weight: bold;
+}
+
+.app-subtitle {
+  padding: 10px 0px;
+  color: white;
+  text-shadow: $text-outline;
+  font-style: italic;
+  font-size: 22px;
+  font-family: $body-font;
+  letter-spacing: 1px;
+}
+
+.app-title:hover {
+  color: white;
+  text-shadow: $text-outline;
+}
+

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const LoginPrompt = () => {
   return (
-    <div className="login-prompt">
+    <div className="LoginPrompt">
       <Link to='/'><button>X</button></Link>
-      <h3 className="prompt-text">
+      <h3 className="login-title">
         You must be logged in to save favorites.
       </h3>
       <Link to='/sign-up'><button>Sign Up</button></Link>

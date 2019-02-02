@@ -53,8 +53,8 @@ export class LoginForm extends Component {
   render() {
     let { status } = this.state;
     return (
-      <form onSubmit={this.handleSubmit} className="login-form">
-        <h2>Login</h2>
+      <form onSubmit={this.handleSubmit} className="LoginForm">
+        <h2>Log In</h2>
         <label htmlFor="email">Email:</label>
         <input type="email" id="email" className="email-input" onChange={this.handleChange} />
         <label htmlFor="password">Password:</label>

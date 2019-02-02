@@ -52,17 +52,17 @@ export class MovieCard extends Component {
     const { title, poster_path, currentUser, favorite, id } = this.props;
     return (
       <div className="MovieCard">
-        <h3 className="movie-title">{title}</h3>
+        <h3 className="moviecard-title">{title}</h3>
         <Link to={`/movies/${id}`}>
           <img
             src={`https://image.tmdb.org/t/p/w500${poster_path}`}
             alt={title}
-            className="MovieCard--image"
+            className="moviecard-image"
           />
         </Link>
-        <button className="favorite-button" onClick={() => this.handleClick(currentUser)}>
-          { favorite ? 'Remove from favorites' : 'Add to favorites'}
-        </button>
+        <div className="moviecard-favorite" onClick={() => this.handleClick(currentUser)}>
+          { favorite ? 'Remove ❌' : 'Favorite 💙'}
+        </div>
       </div>
     );
   }
