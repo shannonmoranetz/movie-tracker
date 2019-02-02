@@ -52,7 +52,7 @@ export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
 
 App.propTypes = {
   movies: PropTypes.array,
-  addMovies: PropTypes.func,
+  fetchMovies: PropTypes.func,
   history: PropTypes.object,
   location: PropTypes.object,
   match: PropTypes.object

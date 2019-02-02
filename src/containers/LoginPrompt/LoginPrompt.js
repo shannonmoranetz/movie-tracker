@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { toggleLoginPrompt } from '../../actions';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { toggleLoginPrompt } from '../../actions';
 
 export const LoginPrompt = (props) => {
-  const { toggleLoginPrompt } = props
+  const { toggleLoginPrompt } = props;
   return (
     <div className="LoginPrompt">
       <button onClick={() => toggleLoginPrompt(false)}>X</button>
@@ -26,3 +27,7 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(null, mapDispatchToProps)(LoginPrompt);
+
+LoginPrompt.propTypes = {
+  toggleLoginPrompt: PropTypes.func
+}
