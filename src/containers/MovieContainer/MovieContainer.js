@@ -32,11 +32,11 @@ export class MovieContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   movies: state.movies,
   favorites: state.favorites,
   showLoginPrompt: state.showLoginPrompt
-})
+});
 
 export default connect(mapStateToProps)(MovieContainer);
 
