@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { fetchData } from '../../utils/api';
-import { setUser } from '../../actions';
+import { createUser } from '../../thunks/createUser';
 
 export class SignUpForm extends Component {
   constructor() {
@@ -26,36 +25,9 @@ export class SignUpForm extends Component {
     event.preventDefault();
     const { name, email, passwordOriginal } = this.state;
     if (this.checkMatchingPassword() && this.checkEmailRegex(email)) {
-      try {
-        const url = 'http://localhost:3000/api/users/new';
-        const options = {
-          method: 'POST',
-          body: JSON.stringify({ name, email, password: passwordOriginal }),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }
-        const response = await fetchData(url, options);
-        await this.autoLoginUser(email, passwordOriginal);
-        this.setState({ status: response.status });
-      } catch (error) {
-        this.setState({ status: 'error' });
-      }
+      const status = await this.props.createUser(name, email, passwordOriginal);
+      this.setState({ status });
     }
-  }
-
-  autoLoginUser = async (email, password) => {
-    const loginUrl = 'http://localhost:3000/api/users';
-    const options = {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-    const response = await fetchData(loginUrl, options);
-    const { name, id } = response.data;
-    this.props.setUser({ name, id });
   }
 
   checkEmailRegex = (email) => {
@@ -131,7 +103,9 @@ export class SignUpForm extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  setUser: (user) => dispatch(setUser(user))
+  createUser: (name, email, password) => dispatch(
+    createUser(name, email, password)
+  )
 });
 
 export default connect(null, mapDispatchToProps)(SignUpForm);
@@ -140,5 +114,5 @@ SignUpForm.propTypes = {
   history: PropTypes.object,
   location: PropTypes.object,
   match: PropTypes.object,
-  setUser: PropTypes.func
+  createUser: PropTypes.func
 };
