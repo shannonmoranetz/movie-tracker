@@ -46,7 +46,7 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  addMovies: (movie) => dispatch(addMovies(movie))
+  addMovies: (movies) => dispatch(addMovies(movies))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
