@@ -22,7 +22,7 @@ export class Header extends Component {
       );
     } else {
       return (
-        <div className="user-links">
+        <div className="links">
           <Link to='/sign-up'>Sign Up</Link>
           <Link to='/login'>Log In</Link>
           <p>Log in to view your favorited movies.</p>

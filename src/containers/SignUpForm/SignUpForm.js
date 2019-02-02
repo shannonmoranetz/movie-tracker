@@ -118,7 +118,7 @@ export class SignUpForm extends Component {
   render() {
     const { status } = this.state;
     return (
-      <form onSubmit={this.handleSubmit} className="form">
+      <form onSubmit={this.handleSubmit} className="SignUpForm">
         <h2>Sign Up</h2>
         {this.getNameAndEmailInputFields()}
         {this.getPasswordInputFields()}

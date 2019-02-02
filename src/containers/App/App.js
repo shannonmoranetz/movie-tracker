@@ -26,7 +26,7 @@ export class App extends Component {
     const { movies } = this.props;
     return (
       <div className="App">
-        <Link to='/'><h1 className="h1">Movie Tracker</h1></Link>
+        <Link to='/'><h1 className="app-title">Movie Tracker</h1></Link>
         <Route path='/sign-up' component={SignUpForm} />
         <Route path='/login' component={LoginForm} />
         <Route path='/favorites' component={MovieContainer}/>
