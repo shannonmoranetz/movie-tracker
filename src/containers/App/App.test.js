@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { App } from './App';
+import { App, mapStateToProps, mapDispatchToProps } from './App';
+import { addMovies } from '../../actions';
 
 describe('App', () => {
   let wrapper;
@@ -16,8 +17,32 @@ describe('App', () => {
     });
   });
 
-  describe('mapStateToProps', () => {});
+  describe('mapStateToProps', () => {
+    it(`should return an object with a movies array`, () => {
+      const mockMovies = [
+        { id: 234567, title: 'A Star is Born' },
+        { id: 345678, title: 'Spider-Man' },
+        { id: 456789, title: 'Bumblebee' }
+      ]
+      const mockState = {
+        movies: mockMovies,
+        currentUser: { id: 1, name: 'Jeo' },
+        favorites: [345678],
+        showLoginPrompt: false
+      }
+      const expected = { movies: mockMovies };
+      const result = mapStateToProps(mockState);
+      expect(result).toEqual(expected);
+    });
+  });
 
-  describe('mapDispatchToProps', () => {});
-  
+  describe('mapDispatchToProps', () => {
+    it('should call dispatch when addMovies is called', () => {
+      const dispatchMock = jest.fn();
+      const expected = addMovies([{ id: 456789, title: 'Bumblebee' }]);
+      const result = mapDispatchToProps(dispatchMock);
+      result.addMovies([{ id: 456789, title: 'Bumblebee' }]);
+      expect(dispatchMock).toHaveBeenCalledWith(expected);
+    });
+  });
 });

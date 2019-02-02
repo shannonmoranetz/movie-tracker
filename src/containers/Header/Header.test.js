@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Header } from './Header';
+import { Header, mapStateToProps, mapDispatchToProps } from './Header';
+import { setUser, setFavorites } from '../../actions';
 
 const setUserMock = jest.fn();
 const setFavoritesMock = jest.fn();
@@ -42,10 +43,34 @@ describe('Header', () => {
     });
   });
 
+  describe('mapStateToProps', () => {
+    it(`should return an object with a currentUser object`, () => {
+      const mockState = {
+        movies: [{ id: 234567, title: 'A Star is Born' }],
+        currentUser: { id: 1, name: 'Jeo' },
+        favorites: [],
+        showLoginPrompt: false
+      }
+      const expected = { currentUser: { id: 1, name: 'Jeo' } };
+      const result = mapStateToProps(mockState);
+      expect(result).toEqual(expected);
+    });    
+  });
 
+  describe('mapDispatchToProps', () => {
+    let dispatchMock = jest.fn()
+    const result = mapDispatchToProps(dispatchMock);
 
-  describe('mapStateToProps', () => {});
+    it('should call dispatch when setUser is called', () => {
+      const expected = setUser({ id: 1, name: 'Jeo' });
+      result.setUser({ id: 1, name: 'Jeo' });
+      expect(dispatchMock).toHaveBeenCalledWith(expected);
+    });
 
-  describe('mapDispatchToProps', () => {});
-
+    it('should call dispatch when setFavorites is called', () => {
+      const expected = setFavorites([123456, 234567]);
+      result.setFavorites([123456, 234567]);
+      expect(dispatchMock).toHaveBeenCalledWith(expected);
+    });
+  });
 });
