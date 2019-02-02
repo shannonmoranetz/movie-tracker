@@ -4,11 +4,11 @@ import { Route, Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchData } from '../../utils/api';
 import { addMovies } from '../../actions';
+import LoginForm from '../LoginForm/LoginForm';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import MovieDetails from '../../components/MovieDetails/MovieDetails';
-import LoginForm from '../LoginForm/LoginForm';
+import NavBar from '../../containers/NavBar/NavBar';
 import SignUpForm from '../../containers/SignUpForm/SignUpForm';
-import '../../styles/main.scss';
 
 export class App extends Component {
   componentDidMount = () => {
@@ -27,10 +27,11 @@ export class App extends Component {
     const { movies } = this.props;
     return (
       <div className="App">
-        <div className="title-section">
+        <header className="title-section">
             <Link to='/'><h1 className="app-title">Movie Tracker</h1></Link>
             <h2 className="app-subtitle">Find and save your favorite new releases.</h2>
-        </div>
+        </header>
+        <NavBar />
         <Route path='/sign-up' component={SignUpForm} />
         <Route path='/login' component={LoginForm} />
         <Route path='/favorites' component={MovieContainer}/>

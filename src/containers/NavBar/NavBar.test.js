@@ -1,17 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Header, mapStateToProps, mapDispatchToProps } from './Header';
+import { NavBar, mapStateToProps, mapDispatchToProps } from './NavBar';
 import { setUser, setFavorites } from '../../actions';
 
 const setUserMock = jest.fn();
 const setFavoritesMock = jest.fn();
 let mockCurrentUser = { name: 'shannon' }
 
-describe('Header', () => {
+describe('NavBar', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(
-      <Header 
+      <NavBar 
         setUser={setUserMock} 
         setFavorites={setFavoritesMock} 
         currentUser={mockCurrentUser} 
@@ -19,7 +19,7 @@ describe('Header', () => {
     );
   });
 
-  describe('Header container', () => {
+  describe('NavBar container', () => {
     it('should match the snapshot when the user is not logged in', () => {
       expect(wrapper).toMatchSnapshot();
     });
@@ -33,7 +33,7 @@ describe('Header', () => {
     it('should match the snapshot when the user is not logged in', () => {
       mockCurrentUser = {};
       wrapper = shallow(
-        <Header 
+        <NavBar 
           setUser={setUserMock} 
           setFavorites={setFavoritesMock} 
           currentUser={mockCurrentUser} 

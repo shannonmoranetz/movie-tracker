@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Header from '../../containers/Header/Header';
 import LoginPrompt from '../../components/LoginPrompt/LoginPrompt';
 import MovieCard from '../../containers/MovieCard/MovieCard';
 
@@ -21,7 +20,6 @@ export class MovieContainer extends Component {
     const favoriteMovies = movies.filter(movie => favorites.includes(movie.id));
     return (
       <div className="MovieContainer">
-        <Header />
         {showLoginPrompt && <LoginPrompt />}
         {match.path === '/' && this.getMoviesToDisplay(movies)}
         {match.path === '/favorites' && this.getMoviesToDisplay(favoriteMovies)}
