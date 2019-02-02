@@ -8,6 +8,7 @@ import MovieContainer from '../MovieContainer/MovieContainer';
 import MovieDetails from '../../components/MovieDetails/MovieDetails';
 import LoginForm from '../LoginForm/LoginForm';
 import SignUpForm from '../../containers/SignUpForm/SignUpForm';
+import '../../styles/main.scss';
 
 export class App extends Component {
   componentDidMount = () => {
