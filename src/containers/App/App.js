@@ -31,7 +31,7 @@ export class App extends Component {
             <Link to='/'><h1 className="app-title">Movie Tracker</h1></Link>
             <h2 className="app-subtitle">Find and save your favorite new releases.</h2>
         </header>
-        <NavBar />
+        <Route path='/' component={NavBar} />
         <Route path='/sign-up' component={SignUpForm} />
         <Route path='/login' component={LoginForm} />
         <Route path='/favorites' component={MovieContainer}/>

@@ -11,7 +11,7 @@ export class NavBar extends Component {
   }
 
   getUserLinks = () => {
-    const { currentUser } = this.props
+    const { currentUser, location } = this.props
     if (currentUser.name) {
       return (
         <div className="user-links">
@@ -19,7 +19,8 @@ export class NavBar extends Component {
            { currentUser.name }
           </span></p>
           <span className="nav-left">
-          <Link to='/favorites' id="item-left">View Favorites</Link>
+          {location.pathname !== '/' && <Link to='/' id="item-left">Home</Link>}
+          {location.pathname === '/' && <Link to='/favorites' id="item-left">View Favorites</Link>}
           </span>
           <span className="nav-right">
             <Link to='/' id="logout-link" onClick={this.handleClick}>Log Out</Link>
@@ -30,6 +31,7 @@ export class NavBar extends Component {
       return (
         <div className="user-links">
           <span className="nav-left">
+            {location.pathname !== '/' && <Link to='/' id="item-left">Home</Link>}
             <Link to='/sign-up' id="item-left">Sign Up</Link>
             <Link to='/login' id="item-right">Log In</Link>
           </span>
@@ -64,5 +66,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
 NavBar.propTypes = {
   currentUser: PropTypes.object,
   setFavorites: PropTypes.func,
-  setUser: PropTypes.func
+  setUser: PropTypes.func,
+
 };
