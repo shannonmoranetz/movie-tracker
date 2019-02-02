@@ -60,9 +60,9 @@ export class MovieCard extends Component {
             className="moviecard-image"
           />
         </Link>
-        <button className="moviecard-favorite" onClick={() => this.handleClick(currentUser)}>
-          { favorite ? 'Remove from favorites' : 'Add to favorites'}
-        </button>
+        <div className="moviecard-favorite" onClick={() => this.handleClick(currentUser)}>
+          { favorite ? 'Remove ❌' : 'Favorite 💜'}
+        </div>
       </div>
     );
   }

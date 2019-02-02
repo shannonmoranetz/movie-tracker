@@ -1,3 +1,47 @@
-.moviecard-image {
+.MovieCard {
+  background-color: $opaque-white;
+  border: 7px solid $border-color;
+  border-radius: 10px;
+  text-align: center;
+  margin: 15px 0px;
   width: 80%;
+  color: $body-font;
+}
+
+.moviecard-image {
+  float: left;
+  width: 100%;
+}
+
+.moviecard-title {
+  display: inline-block;
+  font-size: 26px;
+  font-family: $heading-font;
+  padding: 10px 10px;
+}
+
+.moviecard-favorite {
+  float: left;
+  padding: 5px;
+  width: 100%;
+  font-family: $body-font;
+  font-size: 26px;
+  font-weight: bold;
+  background-color: rgba(243, 241, 255, 0.7);
+  word-spacing: 20px;
+  border: 3px solid $steel-grey;
+}
+
+.MovieCard:hover {
+  box-shadow: 4px 4px 15px $off-white;
+}
+
+.MovieCard:hover h3 {
+  color: white;
+  text-shadow: $text-outline;
+}
+
+.moviecard-favorite:hover {
+  background-image: linear-gradient(white 20%, $salmon 60%);
+  cursor: pointer;
 }
