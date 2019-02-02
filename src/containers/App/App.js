@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { fetchData } from '../../utils/api';
-import { addMovies } from '../../actions';
+import { fetchMovies } from '../../thunks/fetchMovies';
 import LoginForm from '../LoginForm/LoginForm';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import MovieDetails from '../../components/MovieDetails/MovieDetails';
@@ -12,15 +11,10 @@ import SignUpForm from '../../containers/SignUpForm/SignUpForm';
 
 export class App extends Component {
   componentDidMount = () => {
-    this.fetchMovies();
-  }
-  
-  fetchMovies = async () => {
     const apiKey = process.env.REACT_APP_API_KEY;
     const url = 
       `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
-    const data = await fetchData(url);
-    this.props.addMovies(data.results);
+    this.props.fetchMovies(url);
   }
   
   render() {
@@ -51,7 +45,7 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  addMovies: (movies) => dispatch(addMovies(movies))
+  fetchMovies: (url) => dispatch(fetchMovies(url))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
