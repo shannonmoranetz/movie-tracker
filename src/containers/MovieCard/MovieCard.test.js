@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MovieCard }  from './MovieCard';
+import { MovieCard, mapStateToProps, mapDispatchToProps }  from './MovieCard';
+import { setFavorites, toggleLoginPrompt } from '../../actions';
 
 const mockProps = { 
   title: 'frozen',
@@ -31,8 +32,24 @@ describe('MovieCard', () => {
     });
   });
 
-  describe('mapStateToProps', () => {});
+  describe('mapStateToProps', () => {
 
-  describe('mapDispatchToProps', () => {});
-  
+  });
+
+  describe('mapDispatchToProps', () => {
+    let dispatchMock = jest.fn()
+    const result = mapDispatchToProps(dispatchMock);
+
+    it('should call dispatch when setFavorites is called', () => {
+      const expected = setFavorites([234567, 345678]);
+      result.setFavorites([234567, 345678]);
+      expect(dispatchMock).toHaveBeenCalledWith(expected);
+    });
+
+    it('should call dispatch when toggleLoginPrompt is called', () => {
+      const expected = toggleLoginPrompt(false);
+      result.toggleLoginPrompt(false);
+      expect(dispatchMock).toHaveBeenCalledWith(expected);
+    });
+  });
 });
