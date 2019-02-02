@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchData } from '../../utils/api';
+import { getFavorites } from '../../thunks/getFavorites';
 import { setUser, setFavorites, toggleLoginPrompt } from '../../actions';
 
 export class LoginForm extends Component {
@@ -35,19 +36,12 @@ export class LoginForm extends Component {
       const response = await fetchData(loginUrl, options);
       const { name, id } = response.data;
       this.props.setUser({ name, id });
-      await this.getFavorites(response.data.id);
+      await this.props.getFavorites(response.data.id);
       this.props.toggleLoginPrompt(false);
       this.setState({ status: response.status });
     } catch (error) {
       this.setState({ status: 'error' });
     }
-  }
-
-  getFavorites = async (user_id) => {
-    const favesUrl = `http://localhost:3000/api/users/${user_id}/favorites`;
-    const response = await fetchData(favesUrl);
-    const favorites = response.data.map(favorite => favorite.movie_id);
-    this.props.setFavorites(favorites);
   }
 
   render() {
@@ -69,8 +63,9 @@ export class LoginForm extends Component {
 
 export const mapDispatchToProps = (dispatch) => ({
   setUser: (user) => dispatch(setUser(user)),
-  setFavorites: (favorites) => dispatch(setFavorites(favorites)),
-  toggleLoginPrompt: (validity) => dispatch(toggleLoginPrompt(validity))
+  // setFavorites: (favorites) => dispatch(setFavorites(favorites)),
+  toggleLoginPrompt: (validity) => dispatch(toggleLoginPrompt(validity)),
+  getFavorites: (userID) => dispatch(getFavorites(userID))
 });
 
 export default connect(null, mapDispatchToProps)(LoginForm);
