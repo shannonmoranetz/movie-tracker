@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Header } from './Header';
+import { Header, mapStateToProps, mapDispatchToProps } from './Header';
+import { setUser, setFavorites} from '../../actions';
 
 const setUserMock = jest.fn();
 const setFavoritesMock = jest.fn();
@@ -42,10 +43,21 @@ describe('Header', () => {
     });
   });
 
+  describe('mapStateToProps', () => {
+    it(`should return an object with a currentUser object`, () => {
+      const mockState = {
+        movies: [{ id: 234567, title: 'A Star is Born' }],
+        currentUser: { id: 1, name: 'Jeo' },
+        favorites: [],
+        showLoginPrompt: false
+      }
+      const expected = { currentUser: { id: 1, name: 'Jeo' } };
+      const result = mapStateToProps(mockState);
+      expect(result).toEqual(expected);
+    });    
+  });
 
+  describe('mapDispatchToProps', () => {
 
-  describe('mapStateToProps', () => {});
-
-  describe('mapDispatchToProps', () => {});
-
+  });
 });
