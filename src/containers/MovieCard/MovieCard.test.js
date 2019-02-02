@@ -33,7 +33,17 @@ describe('MovieCard', () => {
   });
 
   describe('mapStateToProps', () => {
-
+    it(`should return an object with a currentUser object`, () => {
+      const mockState = {
+        movies: [{ id: 234567, title: 'A Star is Born' }],
+        currentUser: { id: 1, name: 'Jeo' },
+        favorites: [],
+        showLoginPrompt: false
+      }
+      const expected = { currentUser: { id: 1, name: 'Jeo' } };
+      const result = mapStateToProps(mockState);
+      expect(result).toEqual(expected);
+    });
   });
 
   describe('mapDispatchToProps', () => {
