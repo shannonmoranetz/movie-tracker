@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { fetchData } from '../../utils/api';
-import { getFavorites } from '../../thunks/getFavorites';
-import { setUser, setFavorites, toggleLoginPrompt } from '../../actions';
+import { loginUser } from '../../thunks/loginUser';
 
 export class LoginForm extends Component {
   constructor() {
@@ -24,24 +22,8 @@ export class LoginForm extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     const { email, password } = this.state;
-    try {
-      const loginUrl = 'http://localhost:3000/api/users';
-      const options = {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      };
-      const response = await fetchData(loginUrl, options);
-      const { name, id } = response.data;
-      this.props.setUser({ name, id });
-      await this.props.getFavorites(response.data.id);
-      this.props.toggleLoginPrompt(false);
-      this.setState({ status: response.status });
-    } catch (error) {
-      this.setState({ status: 'error' });
-    }
+    const status = await this.props.loginUser(email, password);
+    this.setState({ status });
   }
 
   render() {
@@ -62,18 +44,13 @@ export class LoginForm extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  setUser: (user) => dispatch(setUser(user)),
-  // setFavorites: (favorites) => dispatch(setFavorites(favorites)),
-  toggleLoginPrompt: (validity) => dispatch(toggleLoginPrompt(validity)),
-  getFavorites: (userID) => dispatch(getFavorites(userID))
+  loginUser: (email, password) => dispatch(loginUser(email, password))
 });
 
 export default connect(null, mapDispatchToProps)(LoginForm);
 
 LoginForm.propTypes = {
-  setFavorites: PropTypes.func,
-  setUser: PropTypes.func,
-  toggleLoginPrompt: PropTypes.func,
+  loginUser: PropTypes.func,
   history: PropTypes.object,
   location: PropTypes.object,
   match: PropTypes.object
