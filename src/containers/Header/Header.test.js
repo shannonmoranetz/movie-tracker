@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Header, mapStateToProps, mapDispatchToProps } from './Header';
-import { setUser, setFavorites} from '../../actions';
+import { setUser, setFavorites } from '../../actions';
 
 const setUserMock = jest.fn();
 const setFavoritesMock = jest.fn();
@@ -58,6 +58,19 @@ describe('Header', () => {
   });
 
   describe('mapDispatchToProps', () => {
+    let dispatchMock = jest.fn()
+    const result = mapDispatchToProps(dispatchMock);
 
+    it('should call dispatch when setUser is called', () => {
+      const expected = setUser({ id: 1, name: 'Jeo' });
+      result.setUser({ id: 1, name: 'Jeo' });
+      expect(dispatchMock).toHaveBeenCalledWith(expected);
+    });
+
+    it('should call dispatch when setFavorites is called', () => {
+      const expected = setFavorites([123456, 234567]);
+      result.setFavorites([123456, 234567]);
+      expect(dispatchMock).toHaveBeenCalledWith(expected);
+    });
   });
 });

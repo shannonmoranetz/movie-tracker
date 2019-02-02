@@ -45,8 +45,8 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  setUser: () => dispatch(setUser()),
-  setFavorites: () => dispatch(setFavorites())
+  setUser: (user) => dispatch(setUser(user)),
+  setFavorites: (favorites) => dispatch(setFavorites(favorites))
 }); 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
