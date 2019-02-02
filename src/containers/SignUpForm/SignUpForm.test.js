@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { SignUpForm } from './SignUpForm';
+import { SignUpForm, mapDispatchToProps } from './SignUpForm';
+import { setUser } from '../../actions';
 
 const mockProps = {
   history: {},
@@ -63,6 +64,13 @@ describe('SignUpForm', () => {
     });
   });
 
-  describe('mapDispatchToProps', () => {});
-
+  describe('mapDispatchToProps', () => {
+    it('should call dispatch when setUser is called', () => {
+      const dispatchMock = jest.fn();
+      const expected = setUser({ id: 1, name: 'Jeo' });
+      const result = mapDispatchToProps(dispatchMock);
+      result.setUser({ id: 1, name: 'Jeo' });
+      expect(dispatchMock).toHaveBeenCalledWith(expected);
+    });
+  });
 });
