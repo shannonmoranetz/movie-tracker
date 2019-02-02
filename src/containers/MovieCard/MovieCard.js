@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { fetchData } from '../../utils/api';
-import { setFavorites, toggleLoginPrompt } from '../../actions';
+import { toggleLoginPrompt } from '../../actions';
+import { toggleFavorite } from '../../thunks/toggleFavorite';
 
 export class MovieCard extends Component {
   handleClick = async (user) => {
@@ -13,39 +13,10 @@ export class MovieCard extends Component {
         user_id: user.id,
         movie_id: this.props.id
       };
-      await this.toggleFavorite(movie);
+      await this.props.toggleFavorite(movie, this.props.favorite);
     } else {
       this.props.toggleLoginPrompt(true);
     }
-  }
-
-  toggleFavorite = async (movie) => {
-    const { user_id, movie_id } = movie;
-    if (this.props.favorite) {
-      const url = `http://localhost:3000/api/users/${user_id}/favorites/${movie_id}`;
-      const options = {
-        method: 'DELETE',
-        body: JSON.stringify({ user_id, movie_id }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-      await fetchData(url, options);
-    } else {
-      const url = 'http://localhost:3000/api/users/favorites/new';
-      const options = {
-        method: 'POST',
-        body: JSON.stringify(movie),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      };
-      await fetchData(url, options);
-    }
-    const favesUrl = `http://localhost:3000/api/users/${user_id}/favorites`;
-    const response = await fetchData(favesUrl);
-    const favorites = response.data.map(favorite => favorite.movie_id);
-    this.props.setFavorites(favorites);
   }
 
   render() {
@@ -73,8 +44,8 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  setFavorites: (favorites) => dispatch(setFavorites(favorites)),
-  toggleLoginPrompt: (validity) => dispatch(toggleLoginPrompt(validity))
+  toggleLoginPrompt: (validity) => dispatch(toggleLoginPrompt(validity)),
+  toggleFavorite: (movie, isFavorite) => dispatch(toggleFavorite(movie, isFavorite))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
@@ -92,7 +63,7 @@ MovieCard.propTypes = {
   popularity: PropTypes.number,
   poster_path: PropTypes.string,
   release_date: PropTypes.string,
-  setFavorites: PropTypes.func,
+  toggleFavorite: PropTypes.func,
   toggleLoginPrompt: PropTypes.func,
   title: PropTypes.string,
   video: PropTypes.bool,

@@ -16,7 +16,7 @@ export const loginUser = (email, password) => {
       const response = await fetchData(loginUrl, options);
       const { name, id } = response.data;
       dispatch(setUser({ name, id }));
-      await getFavorites(response.data.id);
+      await dispatch(getFavorites(id));
       dispatch(toggleLoginPrompt(false));
       return response.status;
     } catch {
