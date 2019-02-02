@@ -14,19 +14,29 @@ export class Header extends Component {
     const { currentUser } = this.props
     if (currentUser.name) {
       return (
-        <div className="user-links">
-          <p>Hello, { currentUser.name }</p>
-          <Link to='/favorites' className="favorites-link">View Favorites</Link>
-          <Link to='/' className="logout-link" onClick={this.handleClick}>Log Out</Link>
-        </div>
+        <nav className="user-links">
+          <p className="greeting">Hello,<span className="username">
+           { currentUser.name }
+          </span></p>
+          <span className="nav-left">
+          <Link to='/favorites' id="item-left">View Favorites</Link>
+          </span>
+          <span className="nav-right">
+            <Link to='/' id="logout-link" onClick={this.handleClick}>Log Out</Link>
+          </span>
+        </nav>
       );
     } else {
       return (
-        <div className="links">
-          <Link to='/sign-up'>Sign Up</Link>
-          <Link to='/login'>Log In</Link>
-          <p>Log in to view your favorited movies.</p>
-        </div>
+        <nav className="user-links">
+          <span className="nav-left">
+            <Link to='/sign-up' id="item-left">Sign Up</Link>
+            <Link to='/login' id="item-right">Log In</Link>
+          </span>
+          <span className="nav-right">
+            <p className="login-notice">Log in to save your favorite movies.</p>
+          </span>
+        </nav>
       );
     }
   }

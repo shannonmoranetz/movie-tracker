@@ -1,4 +1,60 @@
 .Header {
   grid-column: 1 / 5;
+  position: sticky;
+  top: 0;
+  background-color: #808daf;
+  background-image: linear-gradient(to right, #b3afcc, $steel-grey, white 95%);
 }
 
+.user-links {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  margin: auto;
+  font-family: $body-font;
+  font-size: 20px;
+  color: $text-color;
+  border-top: 4px solid black;
+  border-bottom: 2px solid black;
+}
+
+.nav-left {
+	display: flex;
+  justify-content: space-around;
+}
+
+.nav-right {
+  margin-left: auto;
+}
+
+#item-left,
+#item-right {
+  padding: 10px;
+  color: $off-white;
+}
+
+#logout-link {
+  padding: 10px;
+  color: black;
+}
+
+.greeting {
+  padding: 10px;
+}
+
+.username {
+  padding: 0px 5px;
+  font-weight: bold;
+}
+
+#item-left:hover,
+#item-right:hover,
+.logout-link:hover {
+  background-color: white;
+  color: $text-color;
+}
+
+#logout-link:hover {
+  background-color: $text-color;
+  color: $off-white;
+}
