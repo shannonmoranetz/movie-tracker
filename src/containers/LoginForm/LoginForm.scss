@@ -18,11 +18,6 @@
   text-shadow: 2px 2px $off-white;
 }
 
-.login-label {
-  padding-bottom: 10px;
-  font-size: 20px;
-}
-
 .login-button {
   width: 60%;
   margin: 15px auto 0px auto;
@@ -35,19 +30,6 @@
   background-color: $steel-grey;
   color: $off-white;
   letter-spacing: 1px;
-}
-
-#email,
-#password {
-  font-size: 20px;
-  padding: 8px;
-}
-
-.login-notice {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 18px;
-  color: $error-color;
 }
 
 .login-button:hover {

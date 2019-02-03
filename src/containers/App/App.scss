@@ -15,6 +15,18 @@ a {
   color: $text-color;
 }
 
+label {
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 20px;
+  padding: 8px;
+}
+
 a:active {
   color: $steel-grey;
 }
@@ -59,3 +71,9 @@ a:active {
   text-shadow: $text-outline;
 }
 
+.notice {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  color: $error-color;
+}
