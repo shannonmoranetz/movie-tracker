@@ -5,15 +5,25 @@ const MovieDetails = (props) => {
   const { title, release_date, poster_path, vote_average, overview } = props;
   return (
     <div className="MovieDetails">
-      <h3 className="movie-title">{title}</h3>
       <img
         src={`https://image.tmdb.org/t/p/w500${poster_path}`}
         alt={title}
         className="movie-image"
       />
-      <p>{overview}</p>
-      <p>Release Date: {release_date}</p>
-      <p>Rating: {vote_average}</p>
+      <div className="movie-info">
+        <h3 className="movie-title">{title}</h3>
+          <p className="movie-overview"> {overview}</p>
+          <p className="movie-details">
+            <span className="detail-bold">
+              Release Date: </span>
+            {release_date}
+          </p>
+          <p className="movie-details">
+            <span className="detail-bold">
+              Rating: </span>
+            {vote_average}
+          </p>
+      </div>
     </div>
   )
 }
