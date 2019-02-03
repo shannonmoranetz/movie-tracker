@@ -6,13 +6,10 @@ import * as api from '../../utils/api';
 jest.mock('../getFavorites');
 
 describe('loginUser thunk', () => {
-  let dispatchMock;
+  const dispatchMock = jest.fn();
   const mockUser = { name: 'shan', id: 1 };
   const thunk = loginUser('email', 'pass');
-  beforeEach(() => {
-    api.fetchData = jest.fn(() => ({ data: mockUser }));
-    dispatchMock = jest.fn();
-  });
+  api.fetchData = jest.fn(() => ({ data: mockUser }));
   
   it('should call dispatch with the getFavorites action', async () => {
     await thunk(dispatchMock);
@@ -33,6 +30,12 @@ describe('loginUser thunk', () => {
     api.fetchData = jest.fn(() => ({ data: mockUser, status: 'success' }));
     const result = await thunk(dispatchMock);
     expect(result).toEqual('success');
+  });
+
+  it('should set user in localStorage', async () => {
+    await thunk(dispatchMock);
+    const expected = JSON.stringify(mockUser);
+    expect(localStorage.getItem('user')).toEqual(expected);
   });
   
   it('should return the string of an error if errors are found', async () => {
