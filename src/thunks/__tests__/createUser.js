@@ -8,9 +8,9 @@ describe('createUser thunk', () => {
   let dispatchMock;
   beforeEach(() => {
     dispatchMock = jest.fn();
-  })
+  });
 
-  it('should call dispatch with the loginUser action', async () => {
+  it('should call dispatch with the loginUser thunk', async () => {
     api.fetchData = jest.fn();
     const thunk = createUser('shannon', 'email', 'pass');
     await thunk(dispatchMock);

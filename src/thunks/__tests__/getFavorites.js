@@ -1,21 +1,16 @@
 import { getFavorites } from '../getFavorites';
-import { loginUser } from '../loginUser';
+import { setFavorites } from '../../actions';
 import * as api from '../../utils/api';
 
-// jest.mock('../loginUser');
-
-describe('getFavorites thunk', () => {
-  let dispatchMock;
-  beforeEach(() => {
-    dispatchMock = jest.fn();
-  })
-  
-  it.skip('should call dispatch', async () => {
-      api.fetchData = jest.fn(() => {
-      return { results: { 'name': 'shannon', 'id': 1 }};
-    })
+describe('getFavorites thunk', () => {  
+  it('should call dispatch', async () => {
+    const mockFavorites = [{ movie_id: 123456 }, { movie_id: 234567 }];
+    let dispatchMock = jest.fn();
+    api.fetchData = jest.fn(() => {
+      return { data: mockFavorites };
+    });
     const thunk = getFavorites(1);
     await thunk(dispatchMock);
-    expect(dispatchMock).toHaveBeenCalledWith(loginUser(1))
-  })
-})
+    expect(dispatchMock).toHaveBeenCalledWith(setFavorites([123456, 234567]));
+  });
+});
