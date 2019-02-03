@@ -15,7 +15,7 @@ export class LoginForm extends Component {
   }
 
   handleChange = (event) => {
-    const { id, value } = event.target
+    const { id, value } = event.target;
     this.setState({ [id]: value });
   }
 

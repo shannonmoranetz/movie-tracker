@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { MovieCard, mapStateToProps, mapDispatchToProps }  from './MovieCard';
 import { toggleLoginPrompt } from '../../actions';
+import { toggleFavorite } from '../../thunks/toggleFavorite';
 
 const mockProps = { 
   title: 'frozen',
@@ -10,6 +11,8 @@ const mockProps = {
   favorite: true,
   id: 123456
 }
+
+jest.mock('../../thunks/toggleFavorite.js')
 
 describe('MovieCard', () => {
   let wrapper;
@@ -53,6 +56,12 @@ describe('MovieCard', () => {
     it('should call dispatch when toggleLoginPrompt is called', () => {
       const expected = toggleLoginPrompt(false);
       result.toggleLoginPrompt(false);
+      expect(dispatchMock).toHaveBeenCalledWith(expected);
+    });
+
+    it('should call dispatch when toggleFavorite is called', () => {
+      const expected = toggleFavorite({ title: 'frozen' }, true);
+      result.toggleFavorite({ title: 'frozen' }, true);
       expect(dispatchMock).toHaveBeenCalledWith(expected);
     });
   });

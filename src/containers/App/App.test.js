@@ -1,9 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
-import { addMovies } from '../../actions';
+import { fetchMovies } from '../../thunks/fetchMovies';
 
 const fetchMoviesMock = jest.fn();
+jest.mock('../../thunks/fetchMovies.js')
 
 describe('App', () => {
   let wrapper;
@@ -16,6 +17,11 @@ describe('App', () => {
   describe('App container', () => {
     it('should properly render the component elements', () => {
       expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should call fetchMovies on componentDidMount', () => {
+      wrapper.instance().componentDidMount();
+      expect(fetchMoviesMock).toHaveBeenCalled();
     });
   });
 
@@ -39,5 +45,12 @@ describe('App', () => {
   });
 
   describe('mapDispatchToProps', () => {
+    it ('should call dispatch with fetchMovies as a param', () => {
+      const dispatchMock = jest.fn();
+      const props = mapDispatchToProps(dispatchMock);
+      const expected = fetchMovies('google.com');
+      props.fetchMovies('google.com');
+      expect(dispatchMock).toHaveBeenCalledWith(expected);
+    });
   });
 });

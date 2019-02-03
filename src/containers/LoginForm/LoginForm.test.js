@@ -4,11 +4,13 @@ import { LoginForm, mapDispatchToProps } from './LoginForm';
 import { loginUser } from '../../thunks/loginUser';
 
 const mockProps = {
-  loginUser: jest.fn(),
+  loginUser: jest.fn(() => 'success'),
   history: {},
   location: {},
   match: {}
 }
+
+jest.mock('../../thunks/loginUser.js')
 
 describe('LoginForm', () => {
   let wrapper;
@@ -30,6 +32,18 @@ describe('LoginForm', () => {
         status: ''
       });
     });
+
+    it('should call loginUser with the correct params', () => {
+      const mockEvent = { preventDefault: jest.fn() };
+      wrapper.find('.LoginForm').simulate('submit', mockEvent);
+      expect(mockProps.loginUser).toHaveBeenCalledWith('', '');
+    });
+
+    it('should set state of status when handleSubmit is called', async () => {
+      const mockEvent = { preventDefault: jest.fn() };
+      await wrapper.find('.LoginForm').simulate('submit', mockEvent);
+      expect(wrapper.state('status')).toEqual('success');
+    });
   
     it('should set state based on an input field when text is typed', () => {
       const event = {target: {id: 'email', value: 'shannon'}};
@@ -39,7 +53,7 @@ describe('LoginForm', () => {
   });
 
   describe('mapDispatchToProps', () => {
-    it.skip('should call dispatch when loginUser is called', () => {
+    it('should call dispatch when loginUser is called', () => {
       let dispatchMock = jest.fn();
       const expected = loginUser('email@test.io', 'shannon');
       const result = mapDispatchToProps(dispatchMock);
@@ -47,5 +61,4 @@ describe('LoginForm', () => {
       expect(dispatchMock).toHaveBeenCalledWith(expected);
     });
   });
-  
 });
