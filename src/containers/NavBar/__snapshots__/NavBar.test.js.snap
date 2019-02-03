@@ -1,3 +1,90 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NavBar NavBar container should match the snapshot when the user is not logged in 1`] = `undefined`;
+exports[`NavBar NavBar container should match the snapshot when the user is not logged in 1`] = `
+<nav
+  className="NavBar"
+>
+  <div
+    className="user-links"
+  >
+    <p
+      className="greeting"
+    >
+      Hello,
+      <span
+        className="username"
+      >
+        shannon
+      </span>
+    </p>
+    <span
+      className="nav-left"
+    >
+      <Link
+        id="item-left"
+        replace={false}
+        to="/favorites"
+      >
+        View Favorites
+      </Link>
+    </span>
+    <span
+      className="nav-right"
+    >
+      <Link
+        id="logout-link"
+        onClick={[Function]}
+        replace={false}
+        to="/"
+      >
+        Log Out
+      </Link>
+    </span>
+  </div>
+</nav>
+`;
+
+exports[`NavBar NavBar container should match the snapshot when the user is not logged in 2`] = `
+<nav
+  className="NavBar"
+>
+  <div
+    className="user-links"
+  >
+    <span
+      className="nav-left"
+    >
+      <Link
+        id="item-left"
+        replace={false}
+        to="/"
+      >
+        Home
+      </Link>
+      <Link
+        id="item-left"
+        replace={false}
+        to="/sign-up"
+      >
+        Sign Up
+      </Link>
+      <Link
+        id="item-right"
+        replace={false}
+        to="/login"
+      >
+        Log In
+      </Link>
+    </span>
+    <span
+      className="nav-right"
+    >
+      <p
+        className="login-notice"
+      >
+        Log in to save your favorite movies.
+      </p>
+    </span>
+  </div>
+</nav>
+`;

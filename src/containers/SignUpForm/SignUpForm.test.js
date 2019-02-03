@@ -65,12 +65,5 @@ describe('SignUpForm', () => {
   });
 
   describe('mapDispatchToProps', () => {
-    it('should call dispatch when setUser is called', () => {
-      const dispatchMock = jest.fn();
-      const expected = setUser({ id: 1, name: 'Jeo' });
-      const result = mapDispatchToProps(dispatchMock);
-      result.setUser({ id: 1, name: 'Jeo' });
-      expect(dispatchMock).toHaveBeenCalledWith(expected);
-    });
   });
 });

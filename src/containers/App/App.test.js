@@ -3,11 +3,13 @@ import { shallow } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
 import { addMovies } from '../../actions';
 
+const fetchMoviesMock = jest.fn();
+
 describe('App', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(
-      <App />
+      <App fetchMovies={fetchMoviesMock} />
     );
   });
 
@@ -37,12 +39,5 @@ describe('App', () => {
   });
 
   describe('mapDispatchToProps', () => {
-    it('should call dispatch when addMovies is called', () => {
-      const dispatchMock = jest.fn();
-      const expected = addMovies([{ id: 456789, title: 'Bumblebee' }]);
-      const result = mapDispatchToProps(dispatchMock);
-      result.addMovies([{ id: 456789, title: 'Bumblebee' }]);
-      expect(dispatchMock).toHaveBeenCalledWith(expected);
-    });
   });
 });

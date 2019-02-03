@@ -5,6 +5,7 @@ import { setUser, setFavorites } from '../../actions';
 
 const setUserMock = jest.fn();
 const setFavoritesMock = jest.fn();
+const mockLocation = { pathname: '/' };
 let mockCurrentUser = { name: 'shannon' }
 
 describe('NavBar', () => {
@@ -15,6 +16,7 @@ describe('NavBar', () => {
         setUser={setUserMock} 
         setFavorites={setFavoritesMock} 
         currentUser={mockCurrentUser} 
+        location={mockLocation}
       />
     );
   });
@@ -25,18 +27,20 @@ describe('NavBar', () => {
     });
     
     it('should call setUser and setFavorites when handleClick is invoked', () => {
-      wrapper.find('.logout-link').simulate('click');
+      wrapper.find('#logout-link').simulate('click');
       expect(setUserMock).toBeCalled();
       expect(setFavoritesMock).toBeCalled();
     });
 
     it('should match the snapshot when the user is not logged in', () => {
+      const mockLocation = { pathname: '/favorites'}
       mockCurrentUser = {};
       wrapper = shallow(
         <NavBar 
           setUser={setUserMock} 
           setFavorites={setFavoritesMock} 
           currentUser={mockCurrentUser} 
+          location={mockLocation}
         />
       );
       expect(wrapper).toMatchSnapshot();

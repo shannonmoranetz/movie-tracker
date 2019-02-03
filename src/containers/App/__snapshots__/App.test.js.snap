@@ -1,3 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App App container should properly render the component elements 1`] = `undefined`;
+exports[`App App container should properly render the component elements 1`] = `
+<div
+  className="App"
+>
+  <header
+    className="title-section"
+  >
+    <Link
+      replace={false}
+      to="/"
+    >
+      <h1
+        className="app-title"
+      >
+        Movie Tracker
+      </h1>
+    </Link>
+    <h2
+      className="app-subtitle"
+    >
+      Find and save your favorite new releases.
+    </h2>
+  </header>
+  <Route
+    component={[Function]}
+    path="/"
+  />
+  <Route
+    component={[Function]}
+    path="/sign-up"
+  />
+  <Route
+    component={[Function]}
+    path="/login"
+  />
+  <Route
+    component={[Function]}
+    path="/favorites"
+  />
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/"
+  />
+  <Route
+    path="/movies/:id"
+    render={[Function]}
+  />
+</div>
+`;

@@ -27,7 +27,7 @@ describe('MovieCard', () => {
     it('should call handleClick when a movie image is clicked', () => {
       wrapper.instance().handleClick = jest.fn();
       wrapper.update();
-      wrapper.find('.favorite-button').simulate('click');
+      wrapper.find('.moviecard-favorite').simulate('click');
       expect(wrapper.instance().handleClick).toBeCalled();
     });
   });
@@ -49,12 +49,6 @@ describe('MovieCard', () => {
   describe('mapDispatchToProps', () => {
     let dispatchMock = jest.fn()
     const result = mapDispatchToProps(dispatchMock);
-
-    it('should call dispatch when setFavorites is called', () => {
-      const expected = setFavorites([234567, 345678]);
-      result.setFavorites([234567, 345678]);
-      expect(dispatchMock).toHaveBeenCalledWith(expected);
-    });
 
     it('should call dispatch when toggleLoginPrompt is called', () => {
       const expected = toggleLoginPrompt(false);
