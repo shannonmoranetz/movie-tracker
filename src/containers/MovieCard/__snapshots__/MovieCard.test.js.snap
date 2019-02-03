@@ -5,7 +5,7 @@ exports[`MovieCard MovieCard container should properly render the component elem
   className="MovieCard"
 >
   <h3
-    className="movie-title"
+    className="moviecard-title"
   >
     frozen
   </h3>
@@ -15,15 +15,15 @@ exports[`MovieCard MovieCard container should properly render the component elem
   >
     <img
       alt="frozen"
-      className="MovieCard--image"
+      className="moviecard-image"
       src="https://image.tmdb.org/t/p/w500url/imgur"
     />
   </Link>
-  <button
-    className="favorite-button"
+  <div
+    className="moviecard-favorite"
     onClick={[Function]}
   >
-    Remove from favorites
-  </button>
+    Remove ❌
+  </div>
 </div>
 `;

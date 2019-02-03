@@ -2,11 +2,11 @@
 
 exports[`LoginForm LoginForm container should properly render the component elements 1`] = `
 <form
-  className="login-form"
+  className="LoginForm"
   onSubmit={[Function]}
 >
   <h2>
-    Login
+    Log In
   </h2>
   <label
     htmlFor="email"

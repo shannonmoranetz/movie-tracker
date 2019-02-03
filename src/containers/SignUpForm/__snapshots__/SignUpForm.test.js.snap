@@ -2,7 +2,7 @@
 
 exports[`SignUpForm SignUpForm container should properly render the component elements 1`] = `
 <form
-  className="form"
+  className="SignUpForm"
   onSubmit={[Function]}
 >
   <h2>

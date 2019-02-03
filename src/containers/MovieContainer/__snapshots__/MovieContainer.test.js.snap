@@ -4,7 +4,6 @@ exports[`MovieContainer MovieContainer container should match snapshot when path
 <div
   className="MovieContainer"
 >
-  <Connect(Header) />
   <Connect(MovieCard)
     favorite={false}
     id={1}
