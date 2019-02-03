@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { MovieCard, mapStateToProps, mapDispatchToProps }  from './MovieCard';
-import { setFavorites, toggleLoginPrompt } from '../../actions';
+import { toggleLoginPrompt } from '../../actions';
 
 const mockProps = { 
   title: 'frozen',
