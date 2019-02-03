@@ -64,6 +64,8 @@ export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
 App.propTypes = {
   movies: PropTypes.array,
   fetchMovies: PropTypes.func,
+  setUser: PropTypes.func,
+  setFavorites: PropTypes.func,
   history: PropTypes.object,
   location: PropTypes.object,
   match: PropTypes.object
