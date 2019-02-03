@@ -1,7 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoginPrompt LoginPrompt component should properly render the component elements 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<div
+  className="LoginPrompt"
+>
+  <button
+    onClick={[Function]}
+  >
+    X
+  </button>
+  <h3
+    className="login-title"
+  >
+    You must be logged in to save favorites.
+  </h3>
+  <Link
+    replace={false}
+    to="/sign-up"
+  >
+    <button
+      onClick={[Function]}
+    >
+      Sign Up
+    </button>
+  </Link>
+  <Link
+    replace={false}
+    to="/login"
+  >
+    <button
+      onClick={[Function]}
+    >
+      Log In
+    </button>
+  </Link>
+</div>
 `;
