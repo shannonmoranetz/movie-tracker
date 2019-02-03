@@ -37,7 +37,7 @@ describe('App', () => {
       expect(setUserMock).toHaveBeenCalledWith({ id: 1, name: 'jeo' });
     });
 
-    it('should get call setUser if there is a user in localStorage', () => {
+    it('should get call setFavorites if there are favorites in localStorage', () => {
       localStorage.setItem('favorites', JSON.stringify([123456]));
       wrapper.instance().getLocalStorage();
       expect(setFavoritesMock).toHaveBeenCalledWith([123456]);
