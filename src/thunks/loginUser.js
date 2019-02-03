@@ -18,6 +18,7 @@ export const loginUser = (email, password) => {
       dispatch(setUser({ name, id }));
       await dispatch(getFavorites(id));
       dispatch(toggleLoginPrompt(false));
+      localStorage.setItem('user', JSON.stringify({ name, id }));
       return response.status;
     } catch {
       return 'error';

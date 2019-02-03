@@ -8,6 +8,8 @@ export class NavBar extends Component {
   handleClick = () => {
     this.props.setUser({});
     this.props.setFavorites([]);
+    localStorage.removeItem('user');
+    localStorage.removeItem('favorites');
   }
 
   getUserLinks = () => {
@@ -67,5 +69,4 @@ NavBar.propTypes = {
   currentUser: PropTypes.object,
   setFavorites: PropTypes.func,
   setUser: PropTypes.func,
-
 };

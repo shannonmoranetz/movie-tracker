@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { setUser, setFavorites } from '../../actions';
 import { fetchMovies } from '../../thunks/fetchMovies';
 import LoginForm from '../LoginForm/LoginForm';
 import MovieContainer from '../MovieContainer/MovieContainer';
@@ -15,6 +16,14 @@ export class App extends Component {
     const url = 
       `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
     this.props.fetchMovies(url);
+    this.getLocalStorage();
+  }
+
+  getLocalStorage = () => {
+    let user = JSON.parse(localStorage.getItem('user'));
+    let favorites = JSON.parse(localStorage.getItem('favorites'));
+    user && this.props.setUser(user);
+    favorites && this.props.setFavorites(favorites);
   }
   
   render() {
@@ -45,7 +54,9 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  fetchMovies: (url) => dispatch(fetchMovies(url))
+  fetchMovies: (url) => dispatch(fetchMovies(url)),
+  setUser: (user) => dispatch(setUser(user)),
+  setFavorites: (favorites) => dispatch(setFavorites(favorites))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

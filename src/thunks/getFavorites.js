@@ -7,5 +7,6 @@ export const getFavorites = (userID) => {
     const response = await fetchData(favesUrl);
     const favorites = response.data.map(favorite => favorite.movie_id);
     dispatch(setFavorites(favorites));
+    localStorage.setItem('favorites', JSON.stringify(favorites));
   }
 }
