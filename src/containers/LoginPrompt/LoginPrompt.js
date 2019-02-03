@@ -8,16 +8,18 @@ export const LoginPrompt = (props) => {
   const { toggleLoginPrompt } = props;
   return (
     <div className="LoginPrompt">
-      <button onClick={() => toggleLoginPrompt(false)}>X</button>
-      <h3 className="login-title">
-        You must be logged in to save favorites.
-      </h3>
-      <Link to='/sign-up'>
-        <button onClick={() => toggleLoginPrompt(false)}>Sign Up</button>
-      </Link>
-      <Link to='/login'>
-        <button onClick={() => toggleLoginPrompt(false)}>Log In</button>
-      </Link>
+      <button className="close-button" onClick={() => toggleLoginPrompt(false)}>X</button>
+      <div className="button-container">
+        <h3 className="login-title">
+          You must be logged in to save favorites.
+        </h3>
+        <Link to='/sign-up'>
+          <button className="loginprompt-button" onClick={() => toggleLoginPrompt(false)}>Sign Up</button>
+        </Link>
+        <Link to='/login'>
+          <button className="loginprompt-button" onClick={() => toggleLoginPrompt(false)}>Log In</button>
+        </Link>
+      </div>
     </div>
   );
 }
