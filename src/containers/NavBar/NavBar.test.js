@@ -32,6 +32,14 @@ describe('NavBar', () => {
       expect(setFavoritesMock).toBeCalled();
     });
 
+    it('should remove user and favorites from localStorage when Log Out is clicked', () => {
+      localStorage.setItem('user', JSON.stringify({ id: 1, name: 'jeo' }));
+      localStorage.setItem('favorites', JSON.stringify([123456]));
+      wrapper.find('#logout-link').simulate('click');
+      expect(localStorage.hasOwnProperty('user')).toEqual(false);
+      expect(localStorage.hasOwnProperty('favorites')).toEqual(false);
+    });
+
     it('should match the snapshot when the user is not logged in', () => {
       const mockLocation = { pathname: '/favorites'}
       mockCurrentUser = {};
