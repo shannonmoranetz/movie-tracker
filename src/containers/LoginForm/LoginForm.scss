@@ -1,0 +1,57 @@
+.LoginForm {
+  width: 30%;
+  margin: 30px auto;
+  display: flex;
+  padding: 25px 20px;
+  flex-direction: column;
+  font-family: $body-font;
+  background-color: $opaque-white;
+  border: 6px solid $border-color;
+  box-shadow: 12px 12px rgba(243, 241, 255, 0.25);
+}
+
+.login-form-title {
+  text-align: center;
+  margin-bottom: 15px;
+  font-family: $heading-font;
+  font-size: 40px;
+  text-shadow: 2px 2px $off-white;
+}
+
+.login-label {
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+.login-button {
+  width: 60%;
+  margin: 15px auto 0px auto;
+  padding: 8px;
+  font-size: 22px;
+  text-transform: capitalize;
+  font-weight: bold;
+  border: 3px solid $border-color;
+  border-radius: 5px;
+  background-color: $steel-grey;
+  color: $off-white;
+  letter-spacing: 1px;
+}
+
+#email,
+#password {
+  font-size: 20px;
+  padding: 8px;
+}
+
+.login-notice {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  color: $error-color;
+}
+
+.login-button:hover {
+  background-color: $powder-blue;
+  color: $text-color;
+  cursor: pointer;
+}

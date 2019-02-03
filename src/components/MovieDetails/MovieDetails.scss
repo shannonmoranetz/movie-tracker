@@ -10,9 +10,10 @@
   height: 45%;
   padding: 10px;
   text-align: center;
-  background-color: $opaque-white;
   border: 6px solid $border-color;
+  background-color: $opaque-white;
   color: $text-color;
+  box-shadow: $offset-shadow;
 }
 
 .movie-title {
@@ -26,7 +27,7 @@
   display: inline-block;
   margin: 3% auto;
   height: 600px;
-  border: 4px solid $off-white;
+  border: 5px solid $off-white;
 }
 
 .movie-overview {
@@ -35,6 +36,7 @@
   padding: 25px;
   background-color: $opaque-white;
   border: 2px solid $steel-grey;
+  border-radius: 10px;
   font-style: italic;
   font-size: 20px;
 }

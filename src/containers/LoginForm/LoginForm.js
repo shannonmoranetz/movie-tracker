@@ -30,13 +30,13 @@ export class LoginForm extends Component {
     let { status } = this.state;
     return (
       <form onSubmit={this.handleSubmit} className="LoginForm">
-        <h2>Log In</h2>
-        <label htmlFor="email">Email:</label>
+        <h2 className="login-form-title">Log In</h2>
+        <label className="login-label" htmlFor="email">Email:</label>
         <input type="email" id="email" className="email-input" onChange={this.handleChange} />
-        <label htmlFor="password">Password:</label>
+        <label className="login-label" htmlFor="password">Password:</label>
         <input type="password" id="password" onChange={this.handleChange} />
-        <input type="submit" value="login" />
-        {status === 'error' && <p>Email and password do not match.</p>}
+        <input className="login-button" type="submit" value="login" />
+        {status === 'error' && <p className="login-notice">Email and password do not match.</p>}
         {status === 'success' && <Redirect to='/' />}
       </form>
     );

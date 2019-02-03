@@ -38,7 +38,7 @@ export class NavBar extends Component {
             <Link to='/login' id="item-right">Log In</Link>
           </span>
           <span className="nav-right">
-            <p className="login-notice">Log in to save your favorite movies.</p>
+            <p>Log in to save your favorite movies.</p>
           </span>
         </div>
       );
