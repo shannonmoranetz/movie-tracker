@@ -55,7 +55,7 @@ export class SignUpForm extends Component {
           required
           className={inputStyle}
         />
-        {!this.checkEmailRegex(email) && <p className="notice">Enter a valid email</p>}
+        {!this.checkEmailRegex(email) && <p className="notice">Please enter a valid email.</p>}
       </div>
     );
   }
