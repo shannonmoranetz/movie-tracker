@@ -51,3 +51,31 @@
   font-family: $heading-font;
   font-size: 19px;
 }
+
+@media screen and (max-width: 910px) {
+  .MovieDetails {
+    display: grid;
+    grid-template-rows: 650px 1fr;
+  }
+
+  .movie-info {
+    width: 400px;
+    height: 95%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .MovieDetails {
+    display: grid;
+    grid-template-rows: 650px 1fr;
+  }
+
+  .movie-image {
+    width: 90%;
+  }
+
+  .movie-info {
+    width: 90%;
+    height: 95%;
+  }
+}
