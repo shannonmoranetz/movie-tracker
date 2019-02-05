@@ -3,8 +3,7 @@
 ## Project Description
   Movie Tracker is a web application built for anyone that would like to save their favorite new releases. Its easy-to-use interface makes it quick to use and remember your favorite movies. Users have the ability to create an account and log in to add or remove their favorite movies.
 
-
-Current Version: 
+Current Version:
 ![Current Version](https://i.imgur.com/ZwLBhLO.gifv)
 
 ## Getting Started
@@ -40,7 +39,7 @@ Finally, view the application at localhost:3001 in your browser. Enjoy!
 
 
 ## Project Development Notes:
-Movie Tracker was built using React, React Router, and Redux. It stores user login information and favorites via a local server. As an introduction to multi-page applications, the learning goals included becoming familiar with Router and Redux. Our team especially focused on writing simple, straightforward React code (including streamlined fetch requests). 
+Movie Tracker was built using React, React Router, Redux, and Redux thunks. It stores user login information and favorites via a local server. As an introduction to multi-page applications, the learning goals included becoming familiar with Router and Redux. Our team especially focused on writing simple, straightforward React code (including streamlined fetch requests). 
 
 ## Future Development and Extensions Notes:
 In the future, we would like to deploy the project with a server-side backend. We would like to do this via node.js and Heroku.
