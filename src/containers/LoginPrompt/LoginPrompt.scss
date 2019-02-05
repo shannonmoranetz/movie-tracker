@@ -2,9 +2,8 @@
   z-index: 1;
   top: 30%;
   left: 35%;
-  margin: 0 auto;
-  height: 20%;
-  width: 30%;
+  height: 170px;
+  width: 430px;
   position: absolute;
   display: inline-block;
   overflow: hidden;
@@ -54,6 +53,38 @@
   color: $off-white;
 }
 
+@media screen and (max-width: 1080px) {
+  .LoginPrompt {
+    left: 30%;
+  }
+}
 
+@media screen and (max-width: 720px) {
+  .LoginPrompt {
+    left: 19%;
+  }
+}
 
+@media screen and (max-width: 550px) {
+  .LoginPrompt {
+    left: 11%;
+    width: 80%;
+    height: 160px;
+  }
 
+  .close-button {
+    float: left;
+    margin: 5px;
+    padding: 1% 2%;
+  }
+  
+  .login-title {
+    font-size: 16px;
+    padding-top: 11px;
+  }
+
+  .loginprompt-button {
+    margin: 10px 15px;
+    padding: 2% 8%;
+  }
+}

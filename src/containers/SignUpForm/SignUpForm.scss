@@ -1,5 +1,5 @@
 .SignUpForm {
-  width: 30%;
+  width: 430px;
   height: 700px;
   margin: 30px auto;
   display: flex;
@@ -56,4 +56,10 @@
   background-color: $powder-blue;
   color: $text-color;
   cursor: pointer;
+}
+
+@media screen and (max-width: 460px) {
+  .SignUpForm {
+    width: 95%;
+  }
 }

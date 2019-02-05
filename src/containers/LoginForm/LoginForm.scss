@@ -1,5 +1,5 @@
 .LoginForm {
-  width: 30%;
+  width: 430px;
   height: 400px;
   margin: 30px auto;
   display: flex;
@@ -37,4 +37,10 @@
   background-color: $powder-blue;
   color: $text-color;
   cursor: pointer;
+}
+
+@media screen and (max-width: 460px) {
+  .LoginForm {
+    width: 95%;
+  }
 }

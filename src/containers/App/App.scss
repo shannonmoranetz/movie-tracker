@@ -77,3 +77,15 @@ a:active {
   font-size: 18px;
   color: $error-color;
 }
+
+@media screen and (max-width: 430px) {
+  .app-title {
+    font-size: 48px;
+    padding-top: 34px;
+  }
+
+  .app-subtitle {
+    font-size: 18px;  
+    padding: 12px 0px;
+  }
+}

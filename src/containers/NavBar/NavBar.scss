@@ -2,6 +2,7 @@
   grid-column: 1 / 5;
   width: 100%;
   position: sticky;
+  height: 50px;
   top: 0;
   background-color: #808daf;
   background-image: linear-gradient(to right, #b3afcc, $steel-grey, white 95%);
@@ -12,6 +13,7 @@
   align-items: center;
   padding: 0 20px;
   margin: auto;
+  height: 50px;
   font-family: $body-font;
   font-size: 20px;
   color: $text-color;
@@ -60,14 +62,18 @@
   color: $off-white;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 520px) {
   #item-left,
   #item-right {
-    padding: 5px;
+    padding: 13px 8px;
   }
 
   .user-links {
     font-size: 16px;
     padding: 0;
+  }
+
+  .nav-right p {
+    font-size: 14px;
   }
 }
