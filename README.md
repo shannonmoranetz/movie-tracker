@@ -4,7 +4,8 @@
   Movie Tracker is a web application built for anyone that would like to save their favorite new releases. Its easy-to-use interface makes it quick to use and remember your favorite movies. Users have the ability to create an account and log in to add or remove their favorite movies.
 
 Current Version:
-![Current Version](https://i.imgur.com/ZwLBhLO.gifv)
+![Current Version](https://user-images.githubusercontent.com/42360624/52250353-b062cc80-28b4-11e9-932d-bd70f6b1c76e.gif)
+
 
 ## Getting Started
 
