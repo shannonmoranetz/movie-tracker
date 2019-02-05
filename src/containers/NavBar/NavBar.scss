@@ -59,3 +59,15 @@
   background-color: $text-color;
   color: $off-white;
 }
+
+@media screen and (max-width: 550px) {
+  #item-left,
+  #item-right {
+    padding: 5px;
+  }
+
+  .user-links {
+    font-size: 16px;
+    padding: 0;
+  }
+}

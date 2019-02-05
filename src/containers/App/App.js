@@ -14,7 +14,7 @@ export class App extends Component {
   componentDidMount = () => {
     const apiKey = process.env.REACT_APP_API_KEY;
     const url = 
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
     this.props.fetchMovies(url);
     this.getLocalStorage();
   }

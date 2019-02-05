@@ -7,3 +7,21 @@
   border-left: 3px solid $border-color;
   padding-bottom: 50px;
 }
+
+@media screen and (max-width: 1080px) {
+  .MovieContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .MovieContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .MovieContainer {
+    grid-template-columns: 1fr;
+  }
+}
