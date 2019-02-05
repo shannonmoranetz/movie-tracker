@@ -14,7 +14,7 @@ export const LoginPrompt = (props) => {
           You must be logged in to save favorites.
         </h3>
         <Link to='/sign-up'>
-          <button className="loginprompt-button" onClick={() => toggleLoginPrompt(false)}>Sign Up</button>
+          <button className="signupprompt-button" onClick={() => toggleLoginPrompt(false)}>Sign Up</button>
         </Link>
         <Link to='/login'>
           <button className="loginprompt-button" onClick={() => toggleLoginPrompt(false)}>Log In</button>

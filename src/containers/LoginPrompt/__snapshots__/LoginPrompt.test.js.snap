@@ -23,7 +23,7 @@ exports[`LoginPrompt LoginPrompt component should properly render the component 
       to="/sign-up"
     >
       <button
-        className="loginprompt-button"
+        className="signupprompt-button"
         onClick={[Function]}
       >
         Sign Up

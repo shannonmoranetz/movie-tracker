@@ -4,12 +4,17 @@ import { MovieCard, mapStateToProps, mapDispatchToProps }  from './MovieCard';
 import { toggleLoginPrompt } from '../../actions';
 import { toggleFavorite } from '../../thunks/toggleFavorite';
 
+const toggleFavoriteMock = jest.fn();
+const toggleLoginPromptMock = jest.fn();
+const mockUser = { id: 1, name: 'shannon' };
 const mockProps = { 
   title: 'frozen',
   poster_path: 'url/imgur',
-  currentUser: { id: 1, name: 'shannon' },
+  currentUser: mockUser,
   favorite: true,
-  id: 123456
+  id: 123456,
+  toggleFavorite: toggleFavoriteMock,
+  toggleLoginPrompt: toggleLoginPromptMock
 }
 
 jest.mock('../../thunks/toggleFavorite.js')
@@ -32,6 +37,16 @@ describe('MovieCard', () => {
       wrapper.update();
       wrapper.find('.moviecard-favorite').simulate('click');
       expect(wrapper.instance().handleClick).toBeCalled();
+    });
+
+    it('should call toggleFavorite when handleClick is called and there is a user', () => {
+      wrapper.instance().handleClick(mockUser);
+      expect(toggleFavoriteMock).toHaveBeenCalled();
+    });
+    
+    it('should call toggleLoginPrompt when handleClick is called and there is not a user', () => {
+      wrapper.instance().handleClick({});
+      expect(toggleLoginPromptMock).toHaveBeenCalledWith(true);
     });
   });
 
