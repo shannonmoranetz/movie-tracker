@@ -49,5 +49,5 @@ In the future, we would like to deploy the project with a server-side backend. W
 https://github.com/turingschool-examples/movie-tracker
 
 ## Contributors
-Jeo D: https://github.com/dForDeveloper
-Shannon Moranetz: https://github.com/shannonmoranetz
+Jeo D [@dForDeveloper](https://github.com/dForDeveloper)
+Shannon Moranetz [@shannonmoranetz](https://github.com/shannonmoranetz)
