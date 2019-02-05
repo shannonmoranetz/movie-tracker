@@ -5,10 +5,14 @@ exports[`SignUpForm SignUpForm container should properly render the component el
   className="SignUpForm"
   onSubmit={[Function]}
 >
-  <h2>
+  <h2
+    className="signup-title"
+  >
     Sign Up
   </h2>
-  <div>
+  <div
+    className="div--email"
+  >
     <label
       htmlFor="name"
     >
@@ -32,8 +36,10 @@ exports[`SignUpForm SignUpForm container should properly render the component el
       required={true}
       value=""
     />
-    <p>
-      Enter a valid email
+    <p
+      className="notice"
+    >
+      Please enter a valid email.
     </p>
   </div>
   <div
@@ -66,6 +72,7 @@ exports[`SignUpForm SignUpForm container should properly render the component el
     />
   </div>
   <input
+    className="create-button"
     type="submit"
     value="Submit"
   />

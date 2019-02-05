@@ -5,34 +5,41 @@ exports[`LoginPrompt LoginPrompt component should properly render the component 
   className="LoginPrompt"
 >
   <button
+    className="close-button"
     onClick={[Function]}
   >
     X
   </button>
-  <h3
-    className="login-title"
+  <div
+    className="button-container"
   >
-    You must be logged in to save favorites.
-  </h3>
-  <Link
-    replace={false}
-    to="/sign-up"
-  >
-    <button
-      onClick={[Function]}
+    <h3
+      className="login-title"
     >
-      Sign Up
-    </button>
-  </Link>
-  <Link
-    replace={false}
-    to="/login"
-  >
-    <button
-      onClick={[Function]}
+      You must be logged in to save favorites.
+    </h3>
+    <Link
+      replace={false}
+      to="/sign-up"
     >
-      Log In
-    </button>
-  </Link>
+      <button
+        className="loginprompt-button"
+        onClick={[Function]}
+      >
+        Sign Up
+      </button>
+    </Link>
+    <Link
+      replace={false}
+      to="/login"
+    >
+      <button
+        className="loginprompt-button"
+        onClick={[Function]}
+      >
+        Log In
+      </button>
+    </Link>
+  </div>
 </div>
 `;

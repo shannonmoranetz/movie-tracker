@@ -5,7 +5,9 @@ exports[`LoginForm LoginForm container should properly render the component elem
   className="LoginForm"
   onSubmit={[Function]}
 >
-  <h2>
+  <h2
+    className="login-form-title"
+  >
     Log In
   </h2>
   <label
@@ -30,6 +32,7 @@ exports[`LoginForm LoginForm container should properly render the component elem
     type="password"
   />
   <input
+    className="login-button"
     type="submit"
     value="login"
   />

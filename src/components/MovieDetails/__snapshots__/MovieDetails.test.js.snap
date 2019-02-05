@@ -4,19 +4,39 @@ exports[`MovieDetails component should properly render the component elements 1`
 <div
   className="MovieDetails"
 >
-  <h3
-    className="movie-title"
-  />
   <img
     className="movie-image"
     src="https://image.tmdb.org/t/p/w500undefined"
   />
-  <p />
-  <p>
-    Release Date: 
-  </p>
-  <p>
-    Rating: 
-  </p>
+  <div
+    className="movie-info"
+  >
+    <h3
+      className="movie-title"
+    />
+    <p
+      className="movie-overview"
+    >
+       
+    </p>
+    <p
+      className="movie-details"
+    >
+      <span
+        className="detail-bold"
+      >
+        Release Date: 
+      </span>
+    </p>
+    <p
+      className="movie-details"
+    >
+      <span
+        className="detail-bold"
+      >
+        Rating: 
+      </span>
+    </p>
+  </div>
 </div>
 `;

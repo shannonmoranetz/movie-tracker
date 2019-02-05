@@ -79,9 +79,7 @@ exports[`NavBar NavBar container should match the snapshot when the user is not 
     <span
       className="nav-right"
     >
-      <p
-        className="login-notice"
-      >
+      <p>
         Log in to save your favorite movies.
       </p>
     </span>
