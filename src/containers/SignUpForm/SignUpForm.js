@@ -44,7 +44,7 @@ export class SignUpForm extends Component {
     const { name, email } = this.state;
     const inputStyle = this.checkEmailRegex(email) ? null : 'input--red';
     return (
-      <div>
+      <div className="div--email">
         <label htmlFor="name">Name:</label>
         <input id="name" value={name} onChange={this.handleChange} required />
         <label htmlFor="email">Email</label>
@@ -55,7 +55,7 @@ export class SignUpForm extends Component {
           required
           className={inputStyle}
         />
-        {!this.checkEmailRegex(email) && <p>Enter a valid email</p>}
+        {!this.checkEmailRegex(email) && <p className="notice">Please enter a valid email.</p>}
       </div>
     );
   }
@@ -82,7 +82,7 @@ export class SignUpForm extends Component {
           required
           className={inputStyle}
         />
-        {!this.checkMatchingPassword() && <p>Passwords do not match.</p>}
+        {!this.checkMatchingPassword() && <p className="notice">Passwords do not match.</p>}
       </div>
     );
   }
@@ -91,11 +91,11 @@ export class SignUpForm extends Component {
     const { status } = this.state;
     return (
       <form onSubmit={this.handleSubmit} className="SignUpForm">
-        <h2>Sign Up</h2>
+        <h2 className="signup-title">Sign Up</h2>
         {this.getNameAndEmailInputFields()}
         {this.getPasswordInputFields()}
-        <input type="submit" value="Submit" />
-        {status === 'error' && <p>Email has already been used.</p>}
+        <input className="create-button" type="submit" value="Submit" />
+        {status === 'error' && <p className="notice">Email has already been used.</p>}
         {status === 'success' && <Redirect to='/' />}
       </form>
     );
