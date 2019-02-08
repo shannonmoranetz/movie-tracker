@@ -5,7 +5,7 @@ import { getFavorites } from './getFavorites';
 export const loginUser = (email, password) => {
   return async (dispatch) => {
     try {
-      const loginUrl = 'http://localhost:3000/api/users';
+      const loginUrl = 'https://movie-tracker-jd.herokuapp.com/api/users';
       const options = {
         method: 'POST',
         body: JSON.stringify({ email, password }),
