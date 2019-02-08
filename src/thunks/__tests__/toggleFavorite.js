@@ -16,7 +16,7 @@ describe('toggleFavorite thunk', () => {
   });
   
   it('should call fetch data with the correct params when a movie is a favorite', async () => {
-    const expectedURL = 'http://localhost:3000/api/users/1/favorites/123456';
+    const expectedURL = 'https://movie-tracker-jd.herokuapp.com/api/users/1/favorites/123456';
     const expectedOptions = {
       method: 'DELETE',
       body: JSON.stringify({ user_id: 1, movie_id: 123456 }),
@@ -30,7 +30,7 @@ describe('toggleFavorite thunk', () => {
   });
 
   it('should call fetch data with the correct params when a movie is not a favorite', async () => {
-    const expectedURL = 'http://localhost:3000/api/users/favorites/new';
+    const expectedURL = 'https://movie-tracker-jd.herokuapp.com/api/users/favorites/new';
     const expectedOptions = {
       method: 'POST',
       body: JSON.stringify(mockMovie),

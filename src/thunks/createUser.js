@@ -4,7 +4,7 @@ import { loginUser } from './loginUser';
 export const createUser = (name, email, password) => {
   return async (dispatch) => {
     try {
-      const url = 'http://localhost:3000/api/users/new';
+      const url = 'https://movie-tracker-jd.herokuapp.com/api/users/new';
       const options = {
         method: 'POST',
         body: JSON.stringify({ name, email, password }),
