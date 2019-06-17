@@ -1,53 +1,47 @@
 # Movie Tracker
 
-## Project Description
-  Movie Tracker is a web application built for anyone that would like to save their favorite new releases. Its easy-to-use interface makes it quick to use and remember your favorite movies. Users have the ability to create an account and log in to add or remove their favorite movies.
+## Mark favorite new movie releases
 
-Current Version:
-![Current Version](https://user-images.githubusercontent.com/42360624/52250353-b062cc80-28b4-11e9-932d-bd70f6b1c76e.gif)
+* * *
 
+### View current new movie information and track your favorites.
 
-## Getting Started
+![Screenshot](https://user-images.githubusercontent.com/42360624/52250353-b062cc80-28b4-11e9-932d-bd70f6b1c76e.gif)
 
-These instructions will get a copy of the project up and running on your local machine for usage and testing purposes. 
+### Features
 
-Create a movie tracker folder locally:
-```
-mkdir movie-tracker
-```
-Clone the project within your new directory:
-```
-$ git clone https://github.com/dForDeveloper/movie-tracker.git
-```
-Additionally, clone this repo within the movie-tracker directory for the backend, following all associated instructions:
+*   User login & logout functionality
+*   Favorite movies saved per each user
+*   New movies fetched from RESTful API
+
+### Tech Stack
+
+*   React ~ Redux & Redux Thunks
+*   React Router
+*   CSS ~ Sass
+*   Jest & Enzyme
+*   PostgreSQL
+
+### Installation
+
+* Local back-end:
 ```
 https://github.com/turingschool-examples/movie-tracker
 ```
-After the backend is set up, start the backend server locally:
+* Dependencies:
 ```
-$ npm start
+npm i
 ```
-In a new terminal window, change directories to the frontend folder to install modules within:
+* Start:
 ```
-$ npm install
+npm start
 ```
-Start the frontend server with the following command:
+* Test:
 ```
-$ npm start
+npm test
 ```
 
-Finally, view the application at localhost:3001 in your browser. Enjoy!
+### Contributors
 
-
-## Project Development Notes:
-Movie Tracker was built using React, React Router, Redux, and Redux thunks. It stores user login information and favorites via a local server. As an introduction to multi-page applications, the learning goals included becoming familiar with Router and Redux. Our team especially focused on writing simple, straightforward React code (including streamlined fetch requests). 
-
-## Future Development and Extensions Notes:
-In the future, we would like to deploy the project with a server-side backend. We would like to do this via node.js and Heroku.
-
-## Original Assignment
-https://github.com/turingschool-examples/movie-tracker
-
-## Contributors
-Jeo D [@dForDeveloper](https://github.com/dForDeveloper)
-Shannon Moranetz [@shannonmoranetz](https://github.com/shannonmoranetz)
+* [Shannon Moranetz](https://github.com/shannonmoranetz)
+* [Jeo D](https://github.com/dForDeveloper)
